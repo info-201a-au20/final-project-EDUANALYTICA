@@ -35,7 +35,7 @@ We are interested in learning more about how education, field of education, and 
 2. calendar_view_week salaries-by-college-type.csv has 270 rows and 8 columns.
 3. calendar_view_week salaries-by-region.csv has rows 321 and 8 columns.
 
-**What questions (from above) can be answered using the data in this dataset?
+**What questions (from above) can be answered using the data in this dataset?**
 
 * What is the salary difference between STEM and NON-STEM majors in short term and long term?
 * What is the difference in salary when comparing, state, ivy league, party, and liberal arts schools.
