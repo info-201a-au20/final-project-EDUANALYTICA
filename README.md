@@ -1,10 +1,10 @@
-# Education Project
+# Education Project Brainstorm 
 
 
 ## Domain of Interest
 **Why are we interested in this field/domain?**
 
-We are interested in learning more about how education, field of education, and level of education affects salary. Our group is interested in this area because we believe that education matters and transforms lives. Because of the potential that education can bring to individuals, we hope that current and prospective students would make wise choices in choosing a career and education path. We aim to explore the different factors in education and analyze the correlation in how the different observations affect each other.
+We are interested in learning more about how education, field of education, and level of education affects salary. Our group is interested in this area because we believe that education matters and transforms lives. Because of the potential that education can bring to individuals, we hope that current and prospective students can make wise choices in choosing a career and education path. We aim to explore the different factors in education and analyze the correlation in how the different observations affect each other.
 
 
 **What other examples of data driven projects related to this domain?**
