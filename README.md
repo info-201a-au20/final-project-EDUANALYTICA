@@ -29,7 +29,7 @@ We are interested in learning more about how education, field of education, and 
 
     All data was obtained from the Wall Street Journal based on data from Payscale, Inc. The rankings come from the alumni salary data, representing 269 colleges and universities across the U.S. in the year of 2017.
 
-**Number of observations (rows) and features (columns) in our data
+**Number of observations (rows) and features (columns) in our data**
 
 1. degrees-that-pay-back.csv has 51 rows and 8 columns.
 2. calendar_view_week salaries-by-college-type.csv has 270 rows and 8 columns.
