@@ -27,7 +27,7 @@ We are interested in learning more about how education, field of education, and 
     - We can compare the salary trends of STEM and NON-STEM undergraduates within short and long term time spans. We can look at which fresh graduates have a higher or lower salary, how their salaries progress through their careers, and how their salaries grow or decrease in the long term.
 
 2. How does the salary differ among different genders (male and female)?
-    - We can compare the salaries between working males and females with the same job titles, in the same locations, and with the same age range. We can see which gender has a lower, higher, or the same salary as their opposite counterpart. 
+    - We can compare the salaries between working males and females with the same job titles, in the same locations, and with the same age range. We can see which gender has a lower, higher, or the same salary as their opposite counterpart.
 
 3. Do students with a master degree earn more than a bachelor degree in the short term and long term?
     - We can compare the overall salary trends of master and bachelor degree graduates from different fields of study within short and long term time spans. We can look at which fresh graduates have a higher or lower salary, how their salaries progress through their careers, and how their salaries grow or decrease in the long term.
@@ -42,7 +42,7 @@ We are interested in learning more about how education, field of education, and 
 **Number of observations (rows) and features (columns) in our data**
 
 1. [degrees-that-pay-back.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/degrees-that-pay-back.csv) has 51 rows and 8 columns.
-2. [salaries-by-college-type.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/degrees-that-pay-back.csv) has 270 rows and 8 columns.
+2. [salaries-by-college-type.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/salaries-by-college-type.csv) has 270 rows and 8 columns.
 3. [salaries-by-region.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/salaries-by-region.csv) has rows 321 and 8 columns.
 
 **What questions (from above) can be answered using the data in this dataset?**
