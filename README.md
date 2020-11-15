@@ -22,10 +22,9 @@ We are interested in learning more about how education, field of education, and 
 
     This project shows which majors are worth the resources. It gives a breakdown of how much people with different majors earn. It encourages students to pursue majors that make economic sense.
 
-**What data-driven questions do we hope to answer about this domain and how?**
-
-- 
 
 ## Finding Data
 **Data sources and description of how the data was collected or generated**
+
+
 
