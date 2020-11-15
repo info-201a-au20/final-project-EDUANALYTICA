@@ -22,6 +22,16 @@ We are interested in learning more about how education, field of education, and 
 
     This project shows which majors are worth the resources. It gives a breakdown of how much people with different majors earn. It encourages students to pursue majors that make economic sense.
 
+**What data-driven questions do we hope to answer about this domain and how?**
+1. What is the salary difference between STEM and NON-STEM majors in short term and long term?
+    - We can compare the salary trends of STEM and NON-STEM undergraduates within short and long term time spans. We can look at which fresh graduates have a higher or lower salary, how their salaries progress through their careers, and how their salaries grow or decrease in the long term.
+
+2. How does the salary differ among different genders (male and female)?
+    - We can compare the salaries between working males and females with the same job titles, in the same locations, and with the same age range. We can see which gender has a lower, higher, or the same salary as their opposite counterpart. 
+
+3. Do students with a master degree earn more than a bachelor degree in the short term and long term?
+    - We can compare the overall salary trends of master and bachelor degree graduates from different fields of study within short and long term time spans. We can look at which fresh graduates have a higher or lower salary, how their salaries progress through their careers, and how their salaries grow or decrease in the long term.
+
 
 ## Finding Data
 **Data sources and description of how the data was collected or generated**
