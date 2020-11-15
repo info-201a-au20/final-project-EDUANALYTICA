@@ -31,9 +31,9 @@ We are interested in learning more about how education, field of education, and 
 
 **Number of observations (rows) and features (columns) in our data**
 
-1. degrees-that-pay-back.csv has 51 rows and 8 columns.
-2. calendar_view_week salaries-by-college-type.csv has 270 rows and 8 columns.
-3. calendar_view_week salaries-by-region.csv has rows 321 and 8 columns.
+1. [degrees-that-pay-back.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/degrees-that-pay-back.csv) has 51 rows and 8 columns.
+2. [salaries-by-college-type.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/degrees-that-pay-back.csv) has 270 rows and 8 columns.
+3. [salaries-by-region.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/salaries-by-region.csv) has rows 321 and 8 columns.
 
 **What questions (from above) can be answered using the data in this dataset?**
 
