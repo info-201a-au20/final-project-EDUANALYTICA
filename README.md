@@ -38,5 +38,5 @@ We are interested in learning more about how education, field of education, and 
 **What questions (from above) can be answered using the data in this dataset?**
 
 * What is the salary difference between STEM and NON-STEM majors in short term and long term?
-* What is the difference in salary when comparing, state, ivy league, party, and liberal arts schools.
+* What is the difference in salary when comparing, state, ivy league, party, and liberal arts schools?
 * What STEM major has the highest average salary?
