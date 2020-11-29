@@ -1,3 +1,7 @@
+chart_description <- "The graph below arranges the different majors in categories 
+and then calculates their average salary.
+It shows their wages from the hoghest to the lowest average pay"
+
 salaries <- read.csv("../data/recent-grads.csv")
 library(dplyr)
 library(ggplot2)
@@ -12,6 +16,3 @@ chart_plot <- ggplot(wages_by_major,
      x = "Major category",
      y = "Average pay"
   )
-chart_description <- "The graph below arranges the different majors in categories 
-and then calculates their average salary.
-It shows their wages from the hoghest to the lowest average pay"
