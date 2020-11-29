@@ -12,7 +12,10 @@ chart_plot <- ggplot(wages_by_major,
                      aes(x = reorder(Major_category, -median_pay),
                          y = median_pay)) +
   geom_bar(stat = "identity") + 
-  labs(Title = "Salary by major",
+  labs(title = "Salary by major",
      x = "Major category",
      y = "Average pay"
-  )
+  ) + coord_flip() + 
+  theme(legend.position = "none",
+        panel.grid = element_blank(),
+        axis.title = element_blank())
