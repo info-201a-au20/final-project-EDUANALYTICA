@@ -46,7 +46,7 @@ desc_chart_menvswomen <- paste("this chart was intended to compare the total pro
 
 # Pie chart of women in different major categories in STEM
 pie_women_majors <- ggplot(women_stem, aes(x = factor(1), y = ShareWomen, fill = Major_category)) +
-  geom_bar(width = 3, stat = "identity", color = "white") +
+  geom_bar(width = 3, stat = "identity") +
   coord_polar(theta = "y") +
   labs(fill = "Major Categories",
        x = NULL,
