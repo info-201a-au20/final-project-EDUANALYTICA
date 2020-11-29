@@ -1,19 +1,19 @@
 ---
-title: "Education Project Midpoint Deliverable MD"
+title: "Education Project Midpoint Deliverable"
 author: "Ian, Brenda, Leon, Jerry, Nicole"
 date: "11/25/2020"
 output: html_document
 ---
 
-```{r setup, echo = FALSE, include=TRUE}
+```{r setup, include=FALSE, echo = FALSE, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("knitr")
+library("dplyr")
 source("scripts/summary_info.R")
-source("scripts/employment_by_majors.R")
 source("scripts/summary_table.R")
 source("scripts/women_in_stem.R")
+source("scripts/employment_by_majors.R")
 source("scripts/bar_chart.R")
-knitr::opts_chunk$set(echo = FALSE)
-
-library(knitr)
 ```
 
 ### Midpoint Deliverable Report
@@ -24,7 +24,42 @@ of education, and gender affect salary. Our data set was imported from
 contains information pertaining to the salary, employment, and gender data 
 of different majors and levels of education. 
 
-### Summary Information 
+### Summary Paragraph
+```{r summary, include = FALSE, message = FALSE}
+info <- get_summary_info(all_grad_data, grad_student_data)
+info$highest_avg_unemployment_rate
+info$lowest_avg_unemployment_rate
+info$highest_median_salary
+info$lowest_median_salary
+info$grad_vs_nongrad
+```
+TEST `r info$highest_avg_unemployment_rate` AND THIS `r info$highest_median_salary`
 
 
+### Summary Table
+```{r kable, echo = FALSE, message = FALSE}
+kable(displayed_table)
+```
+
+### Charts
+
+#### Pie Chart
+
+```{r, echo=FALSE, message = FALSE}
+pie_women_majors
+```
+
+#### Bar Chart
+
+```{r, echo=FALSE, message = FALSE, fig.width = 30, fig.height= 15}
+chart_plot
+```
+
+#### WAGES chart
+
+```{r, echo=FALSE, message = FALSE, fig.width = 10, fig.height= 5}
+desc_employment_by_majors
+
+scatter_plot
+```
 
