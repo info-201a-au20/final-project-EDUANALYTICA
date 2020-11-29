@@ -42,7 +42,6 @@ pie_menvswomen <- ggplot(proportions_genders, aes(x = factor(1), y = prop, fill 
 pie_menvswomen
 
 #Description of Pie Chart of the proportion of men vs women in STEM
-
 desc_chart_menvswomen <- paste("this chart was intended to compare the total proportion of women vs the total proportion of men in STEM.")
 
 # Pie chart of women in different major categories in STEM
