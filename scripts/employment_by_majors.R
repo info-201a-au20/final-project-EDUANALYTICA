@@ -32,10 +32,12 @@ scatter_plot <- ggplot(data = scatter_plot_data) +
     x = "Number of unemployed students (1 unit = 1000 students)",
     y = "Number of employed students (1 unit = 1000 students)"
   )
-ggplotly(scatter_plot)
+scatter_plot <- ggplotly(scatter_plot)
 
-desc_employment_by_majors <- 
-  paste0("This chart was intended to visualize the difference between ", 
-         "employeed students and unemployeed by majors. ",
-         "The radius of each dot is a representation of their salaries.")
+desc_employment_by_majors <-
+  paste0(
+    "This chart was intended to visualize the difference between ",
+    "employeed students and unemployeed by majors. ",
+    "The radius of each dot is a representation of their salaries."
+  )
 desc_employment_by_majors

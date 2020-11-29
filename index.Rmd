@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library("knitr")
 library("dplyr")
+library("plotly")
 source("scripts/summary_info.R")
 source("scripts/summary_table.R")
 source("scripts/women_in_stem.R")
@@ -16,11 +17,15 @@ source("scripts/employment_by_majors.R")
 source("scripts/bar_chart.R")
 ```
 
-### Midpoint Deliverable Report
+## How Level and Field of Education, as we
+
+### Introduction
 
 Our domain of interest is about education, more specifically how level and field
-of education, and gender affect salary. Our data set was imported from 
-**fivethirtyeight** which based its data from the United States Census. The [data set](https://github.com/fivethirtyeight/data/tree/master/college-majors)
+of education affect salary and the gender disparities between different fields. 
+Our data set was imported from **fivethirtyeight** which based its data from the 
+United States Census. The 
+[data set](https://github.com/fivethirtyeight/data/tree/master/college-majors)
 contains information pertaining to the salary, employment, and gender data 
 of different majors and levels of education. 
 
@@ -33,8 +38,20 @@ info$highest_median_salary
 info$lowest_median_salary
 info$grad_vs_nongrad
 ```
-TEST `r info$highest_avg_unemployment_rate` AND THIS `r info$highest_median_salary`
 
+There were a total of 5 datasets provided from our source. **all-ages.csv**,
+**grad-students.csv**, **recent-grads.csv**, **majors-list.csv**, and
+**women-stem.csv**. The recent-grads dataset contains all information from
+individuals **<28**, while grad-students contains all information from individuals
+ages **25+**. Most of the data parsed was from the all-ages dataset. From the data
+analysis we can conclude that the field with the highest unemployment rate is
+**`r info$highest_avg_unemployment_rate`** while the field with the lowest 
+unemployment rate is **`r info$lowest_avg_unemployment_rate`**. In addition, the
+field with the highest median salary is **`r info$highest_median_salary`**, while 
+the field with the lowest median salary is **`r info$lowest_median_salary`**. 
+When comparing the median salary of students who had gone to grad school versus 
+students who had not gone to grad school, the average difference was, 
+**$`r format(info$grad_vs_nongrad, scientific = FALSE)`**.
 
 ### Summary Table
 ```{r kable, echo = FALSE, message = FALSE}
@@ -46,18 +63,22 @@ kable(displayed_table)
 #### Pie Chart
 
 ```{r, echo=FALSE, message = FALSE}
+desc_chart_diff_majors
+
 pie_women_majors
 ```
 
-#### Bar Chart
+#### Bar Plot
 
-```{r, echo=FALSE, message = FALSE, fig.width = 30, fig.height= 15}
+```{r, echo=FALSE, message = FALSE, fig.width = 15, fig.height = 10}
+chart_description
+
 chart_plot
 ```
 
-#### WAGES chart
+#### Scatter Plot
 
-```{r, echo=FALSE, message = FALSE, fig.width = 10, fig.height= 5}
+```{r, echo=FALSE, message = FALSE, fig.width = 10, fig.height= 8}
 desc_employment_by_majors
 
 scatter_plot

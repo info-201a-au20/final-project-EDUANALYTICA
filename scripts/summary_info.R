@@ -1,11 +1,12 @@
 library(dplyr)
 
 all_grad_data <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE)
-grad_student_data <- read.csv("data/grad-students.csv", 
-                              stringsAsFactors = FALSE)
+grad_student_data <- read.csv("data/grad-students.csv",
+  stringsAsFactors = FALSE
+)
 
 get_summary_info <- function(dataset_one, dataset_two) {
-  ret <-list()
+  ret <- list()
   # The major category with the highest unemployment rate including recent grads
   # grad students
   ret$highest_avg_unemployment_rate <- dataset_one %>%
@@ -66,8 +67,9 @@ get_summary_info <- function(dataset_one, dataset_two) {
         avg_median_nongrad_salary
     ) %>%
     summarize(avg_median_difference_salary = mean(avg_diff_salary,
-                                                  na.rm = TRUE)) %>%
+      na.rm = TRUE
+    )) %>%
     pull(avg_median_difference_salary)
-  
+
   return(ret)
 }
