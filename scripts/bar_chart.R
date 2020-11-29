@@ -21,7 +21,6 @@ chart_plot <- ggplot(wages_by_major,
      x = "Major category",
      y = "Average pay"
   ) + coord_flip() + 
-  theme(legend.position = "none",
-        panel.grid = element_blank(),
+  theme(panel.grid = element_blank(),
         axis.title = element_blank())
 

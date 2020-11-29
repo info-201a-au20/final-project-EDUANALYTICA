@@ -48,7 +48,7 @@ pie_menvswomen <- ggplot(proportions_genders, aes(
 
 # Description of Pie Chart of the proportion of men vs women in STEM
 desc_chart_menvswomen <- paste0(
-  "this chart was intended to compare the total",
+  "This chart was intended to compare the total",
   " proportion of women vs the total proportion of men in STEM."
 )
 

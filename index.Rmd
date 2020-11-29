@@ -17,7 +17,7 @@ source("scripts/employment_by_majors.R")
 source("scripts/bar_chart.R")
 ```
 
-## How Level and Field of Education, as we
+## How Level and Field of Education affect salary, Gender disparities in Majors
 
 ### Introduction
 
@@ -70,7 +70,7 @@ pie_women_majors
 
 #### Bar Plot
 
-```{r, echo=FALSE, message = FALSE, fig.width = 15, fig.height = 10}
+```{r, echo=FALSE, message = FALSE}
 chart_description
 
 chart_plot
