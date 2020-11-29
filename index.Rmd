@@ -5,12 +5,12 @@ date: "11/25/2020"
 output: html_document
 ---
 
-```{r setup, include=TRUE}
+```{r setup, echo = FALSE, include=TRUE}
 source("scripts/summary_info.R")
 source("scripts/employment_by_majors.R")
 source("scripts/summary_table.R")
-#source("scripts/women_in_stem.R")
-#source("scripts/Bar chart.r")
+source("scripts/women_in_stem.R")
+source("scripts/bar_chart.R")
 knitr::opts_chunk$set(echo = FALSE)
 
 library(knitr)
