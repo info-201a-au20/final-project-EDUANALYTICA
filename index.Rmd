@@ -5,26 +5,22 @@ date: "11/25/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = FALSE)
+source("scripts/summary_info.R")
+
+library(knitr)
 ```
 
-## R Markdown
+### Midpoint Deliverable Report
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Our domain of interest is about education, more specifically how level and field
+of education, and gender affect salary. Our data set was imported from 
+**fivethirtyeight** which based its data from the United States Census. The [data set](https://github.com/fivethirtyeight/data/tree/master/college-majors)
+contains information pertaining to the salary, employment, and gender data 
+of different majors and levels of education. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### Summary Information 
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
