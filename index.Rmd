@@ -70,7 +70,7 @@ pie_women_majors
 
 #### Bar Plot
 
-```{r, echo=FALSE, message = FALSE, fig.width = 15, fig.height = 10}
+```{r, echo=FALSE, message = FALSE}
 chart_description
 
 chart_plot
