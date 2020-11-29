@@ -17,7 +17,7 @@ source("scripts/employment_by_majors.R")
 source("scripts/bar_chart.R")
 ```
 
-## How Level and Field of Education, as we
+## How Level and Field of Education affect salary, Gender disparities in Majors
 
 ### Introduction
 
