@@ -1,7 +1,7 @@
 library(dplyr)
 
-all_grad_data <- read.csv("../data/all-ages.csv", stringsAsFactors = FALSE)
-grad_student_data <- read.csv("../data/grad-students.csv",
+all_grad_data <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE)
+grad_student_data <- read.csv("data/grad-students.csv",
   stringsAsFactors = FALSE
 )
 

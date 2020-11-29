@@ -22,14 +22,14 @@ scatter_plot_data <- all_ages %>%
 scatter_plot <- ggplot(data = scatter_plot_data) +
   geom_point(
     mapping = aes(
-      x = employed, y = unemployed, color = Major_category,
-      size = median
+      x = employed / 1000, y = unemployed / 1000, color = Major_category,
+      size = median, caption = "HELLO!!! This is description"
     )
   ) +
   labs(
     title = "The Post-Graduation Employment Staus by College Major Categories",
     subtitle = "Dot size represents the median of salaries",
-    x = "Number of unemployed students",
-    y = "Number of employed students"
+    x = "Number of unemployed students (1 unit = 1000 students)",
+    y = "Number of employed students (1 unit = 1000 students)"
   )
 ggplotly(scatter_plot)
