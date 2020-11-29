@@ -32,11 +32,28 @@ proportions_genders <- data.frame(
 )
 
 # Pie Chart of the proportion of men vs women in STEM
-ggplot(proportions_genders, aes(x = factor(1), y = prop, fill = Gender)) +
+pie_menvswomen <- ggplot(proportions_genders, aes(x = factor(1), y = prop, fill = Gender)) +
   geom_bar(width = 3, stat = "identity", color = "white") +
-  coord_polar(theta = "y")
+  coord_polar(theta = "y") +
+  labs(fill = "Genders",
+       x = NULL,
+       y = NULL,
+       title = "Pie Chart of the proportion of men vs women in STEM")
+pie_menvswomen
+
+#Description of Pie Chart of the proportion of men vs women in STEM
+
+desc_chart_menvswomen <- paste("this chart was intended to compare the total proportion of women vs the total proportion of men in STEM.")
 
 # Pie chart of women in different major categories in STEM
-ggplot(women_stem, aes(x = factor(1), y = ShareWomen, fill = Major_category)) +
+pie_women_majors <- ggplot(women_stem, aes(x = factor(1), y = ShareWomen, fill = Major_category)) +
   geom_bar(width = 3, stat = "identity", color = "white") +
-  coord_polar(theta = "y")
+  coord_polar(theta = "y") +
+  labs(fill = "Major Categories",
+       x = NULL,
+       y = NULL,
+       title = "Pie Chart of women in different major categories in STEM")
+pie_women_majors
+
+#Description of Pie chart of women in different major categories in STEM
+desc_chart_diff_majors <- paste("this chart was intended to display the proportion of women in different the major categories of STEM")
