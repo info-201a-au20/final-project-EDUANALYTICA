@@ -44,7 +44,7 @@ individuals **<28**, while grad-students contains all information from individua
 
 ### Summary Table
 
-> The summary table is grouped by major category and display its *mean salary*, *25th Percentile Salary*, and *75th Percentile Salary*. The aggregate table obviously shows the numerical difference of these 3 values among various majors. 
+> The summary table is grouped by major category and display its *mean salary*, *25th Percentile Salary*, and *75th Percentile Salary*. Through grouping by major category, the aggregate table obviously shows the numerical difference of these 3 values among various majors. 
 
 ```{r kable, echo = FALSE, message = FALSE}
 kable(get_summary_table(grad_stu_df))
