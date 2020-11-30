@@ -5,7 +5,7 @@ date: "11/25/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE, echo = FALSE, include = FALSE}
+```{r setup, include = FALSE, echo = FALSE, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("knitr")
 library("dplyr")
@@ -54,7 +54,7 @@ kable(get_summary_table(grad_stu_df))
 
 #### Pie Chart
 
-```{r, echo = FALSE, message = FALSE, fig.align="center"}
+```{r, echo = FALSE, message = FALSE, fig.align = "center"}
 pie_women_majors
 ```
 
@@ -62,7 +62,7 @@ pie_women_majors
 
 #### Bar Plot
 
-```{r, echo = FALSE, message = FALSE, fig.align="center"}
+```{r, echo = FALSE, message = FALSE, fig.align = "center"}
 chart_plot
 ```
 
@@ -70,7 +70,7 @@ chart_plot
 
 #### Scatter Plot
 
-```{r, echo = FALSE, message = FALSE, fig.width = 10, fig.height= 8}
+```{r, echo = FALSE, message = FALSE, fig.width = 10, fig.height = 8}
 scatter_plot
 ```
 
