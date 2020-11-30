@@ -1,5 +1,6 @@
 # Education Project Brainstorm 
 
+- [Mid-Point Delivery](https://info-201a-au20.github.io/final-project-iwangy/)
 
 ## Domain of Interest
 **Why are we interested in this field/domain?**
@@ -35,15 +36,18 @@ We are interested in learning more about how education, field of education, and 
 
 ## Finding Data
 **Data sources and description of how the data was collected or generated**
-1. [College Salaries by Kaggle](https://www.kaggle.com/wsj/college-salaries)
+1. [538 College Majors Dataset](https://github.com/fivethirtyeight/data/tree/master/college-majors)
 
-    All data was obtained from the Wall Street Journal based on data from Payscale, Inc. The rankings come from the alumni salary data, representing 269 colleges and universities across the U.S. in the year of 2017.
+All data obtained from the American Community Survey Public Use Microdata series, from the United States Census. The data contains
+grad students (ages 25+) as well as recent grads (ages <28) with information about basic earnings and labor force information.
 
 **Number of observations (rows) and features (columns) in our data**
 
-1. [degrees-that-pay-back.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/degrees-that-pay-back.csv) has 51 rows and 8 columns.
-2. [salaries-by-college-type.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/salaries-by-college-type.csv) has 270 rows and 8 columns.
-3. [salaries-by-region.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/salaries-by-region.csv) has rows 321 and 8 columns.
+1. [all-ages.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/all-ages.csv) has 174 rows and 11 columns.
+2. [grad-students.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/grad-students.csv) has 174 rows and 22 columns.
+3. [recent-grads.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/recent-grads.csv) has rows 174 and 18 columns.
+4. [women-stem.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/women-stem.csv) has 78 rows and 9 columns.
+5. [majors-list.csv](https://github.com/info-201a-au20/final-project-iwangy/blob/master/data/majors-list.csv) has 175 rows and 3 columns.
 
 **What questions (from above) can be answered using the data in this dataset?**
 

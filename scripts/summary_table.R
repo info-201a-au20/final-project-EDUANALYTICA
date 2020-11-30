@@ -27,4 +27,3 @@ get_summary_table <- function(df) {
     )
   )
 }
-

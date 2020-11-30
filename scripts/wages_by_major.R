@@ -23,4 +23,3 @@ chart_plot <- ggplot(wages_by_major,
   ) + coord_flip() +
   theme(panel.grid = element_blank(),
         axis.title = element_blank())
-
