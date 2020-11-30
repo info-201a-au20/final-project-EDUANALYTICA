@@ -3,8 +3,6 @@
 # libraries
 library(dplyr)
 library(ggplot2)
-library(lintr)
-library(stringr)
 
 # women in STEM data set
 women_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
