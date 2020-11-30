@@ -21,11 +21,8 @@ source("scripts/wages_by_major.R")
 
 ### Introduction
 
-Our domain of interest is about education, more specifically how level and field
-of education affect salary and the gender disparities between different fields. 
-Our data set was imported from **fivethirtyeight** which based its data from the 
-United States Census. The 
-[data set](https://github.com/fivethirtyeight/data/tree/master/college-majors)
+The domain of interest of this project is about education, more specifically how level and field of education affect salary and the gender disparities between different fields. 
+Our data set was imported from *fivethirtyeight* which based its data from the United States Census. The [data set](https://github.com/fivethirtyeight/data/tree/master/college-majors)
 contains information pertaining to the salary, employment, and gender data 
 of different majors and levels of education. 
 
@@ -39,48 +36,41 @@ info$lowest_median_salary
 info$grad_vs_nongrad
 ```
 
-There were a total of 5 datasets provided from our source. **all-ages.csv**,
-**grad-students.csv**, **recent-grads.csv**, **majors-list.csv**, and
-**women-stem.csv**. The recent-grads dataset contains all information from
-individuals **<28**, while grad-students contains all information from individuals
-ages **25+**. Most of the data parsed was from the all-ages dataset. From the data
-analysis we can conclude that the field with the highest unemployment rate is
-**`r info$highest_avg_unemployment_rate`** while the field with the lowest 
-unemployment rate is **`r info$lowest_avg_unemployment_rate`**. In addition, the
-field with the highest median salary is **`r info$highest_median_salary`**, while 
-the field with the lowest median salary is **`r info$lowest_median_salary`**. 
-When comparing the median salary of students who had gone to grad school versus 
-students who had not gone to grad school, the average difference was, 
-**$`r format(info$grad_vs_nongrad, scientific = FALSE)`**.
+There were a total of 5 datasets provided from our source. *all-ages.csv*,
+*grad-students.csv*, *recent-grads.csv*, *majors-list.csv*, and
+*women-stem.csv*. The recent-grads dataset contains all information from
+individuals **<28**, while grad-students contains all information from individuals ages **25+**. Most of the data parsed was from the all-ages dataset. From the data analysis we can conclude that the field with the highest unemployment rate is **`r info$highest_avg_unemployment_rate`** while the field with the lowestunemployment rate is **`r info$lowest_avg_unemployment_rate`**. In addition, the field with the highest median salary is **`r info$highest_median_salary`**, whilethe field with the lowest median salary is **`r info$lowest_median_salary`**. When comparing the median salary of students who had gone to grad school versus students who had not gone to grad school, the average difference was, **$`r format(info$grad_vs_nongrad, scientific = FALSE)`**.
 
 ### Summary Table
+
+> The summary table is grouped by major category and display its *mean salary*, *25th Percentile Salary*, and *75th Percentile Salary*. The aggregate table obviously shows the numerical difference of these 3 values among various majors. 
+
 ```{r kable, echo = FALSE, message = FALSE}
-kable(displayed_table)
+kable(get_summary_table(grad_stu_df))
 ```
 
 ### Charts
 
 #### Pie Chart
 
-```{r, echo=FALSE, message = FALSE}
-desc_chart_diff_majors
-
+```{r, echo = FALSE, message = FALSE, fig.align="center"}
 pie_women_majors
 ```
 
+> This chart was intended to display the proportion of women in different the major categories of STEM.
+
 #### Bar Plot
 
-```{r, echo=FALSE, message = FALSE}
-chart_description
-
+```{r, echo = FALSE, message = FALSE, fig.align="center"}
 chart_plot
 ```
 
+> The graph above arranges the different majors in categories and then calculates their average salary. It shows their wages from the hoghest to the lowest average pay.
+
 #### Scatter Plot
 
-```{r, echo=FALSE, message = FALSE, fig.width = 10, fig.height= 8}
-desc_employment_by_majors
-
+```{r, echo = FALSE, message = FALSE, fig.width = 10, fig.height= 8}
 scatter_plot
 ```
 
+> This chart was intended to visualize the difference between employeed students and unemployeed by majors. The radius of each dot is a representation of the median salary by majors.
