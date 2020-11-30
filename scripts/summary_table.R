@@ -5,11 +5,11 @@ grad_stu_df <- read.csv("data/all-ages.csv",
   stringsAsFactors = FALSE
 )
 
-# create a function that reads a dataframe as an argument, and return the 
-# summary values of that dataframe. The return includes "Major Category" 
+# create a function that reads a dataframe as an argument, and return the
+# summary values of that dataframe. The return includes "Major Category"
 # "Average Median Salary" "Average 25th Percentile Salary" "Average 75th
 # Percentile Salary".
-get_summary_table <- function(df){
+get_summary_table <- function(df) {
   return(
     df %>%
       group_by(Major_category) %>%
@@ -27,3 +27,4 @@ get_summary_table <- function(df){
     )
   )
 }
+

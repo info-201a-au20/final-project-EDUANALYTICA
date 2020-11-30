@@ -16,11 +16,11 @@ wages_by_major <- salaries %>%
 chart_plot <- ggplot(wages_by_major,
                      aes(x = reorder(Major_category, -median_pay),
                          y = median_pay)) +
-  geom_bar(stat = "identity") + 
+  geom_bar(stat = "identity") +
   labs(title = "Salary by major",
      x = "Major category",
      y = "Average pay"
-  ) + coord_flip() + 
+  ) + coord_flip() +
   theme(panel.grid = element_blank(),
         axis.title = element_blank())
 

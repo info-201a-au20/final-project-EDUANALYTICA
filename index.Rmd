@@ -27,6 +27,7 @@ contains information pertaining to the salary, employment, and gender data
 of different majors and levels of education. 
 
 ### Summary Paragraph
+
 ```{r summary, include = FALSE, message = FALSE}
 info <- get_summary_info(all_grad_data, grad_student_data)
 info$highest_avg_unemployment_rate
