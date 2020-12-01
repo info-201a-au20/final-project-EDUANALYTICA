@@ -10,8 +10,8 @@ women_by_majors <- women_stem %>%
   select(Major_category, Total, Men, Women, ShareWomen) %>% 
   group_by(Major_category) %>%
   summarise(
-    Men = sum(Men, na.rm = TRUE)/sum(Total, na.rm = TRUE), # / sum(Total, na.rm = TRUE),
-    Women = sum(Women, na.rm = TRUE)/sum(Total, na.rm = TRUE), # / sum(Total, na.rm = TRUE),
+    Men = (sum(Men, na.rm = TRUE)/sum(Total, na.rm = TRUE)) * 100, # / sum(Total, na.rm = TRUE),
+    Women = (sum(Women, na.rm = TRUE)/sum(Total, na.rm = TRUE)) * 100, # / sum(Total, na.rm = TRUE),
   )
 
 women_by_majors_test <- data.frame(t(women_by_majors)) %>% 
@@ -29,25 +29,22 @@ rownames(women_by_majors_test) = list("Male" = "Male", "Female" = "Female")
 cols <- colnames(women_by_majors_test)
 
 
-pie_biology <- ggplot(data = women_by_majors_test, aes(x = "", y = Biology_LifeSciences, fill = Gender))+
-  geom_bar(stat = "identity")+
+pie_biology <- ggplot(data = women_by_majors_test, aes(x = "", y = as.numeric(Biology_LifeSciences), fill = Gender))+
+  geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y")
   
-pie_computers <- ggplot(data = women_by_majors_test, aes(x = "", y = Computers_Mathematics, fill = Gender))+
-  geom_bar(stat = "identity")+
+pie_computers <- ggplot(data = women_by_majors_test, aes(x = "", y = as.numeric(Computers_Mathematics), fill = Gender))+
+  geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y")
 
-pie_engineering <- ggplot(data = women_by_majors_test, aes(x = "", y = Engineering , fill = Gender))+
-  geom_bar(stat = "identity")+
+pie_engineering <- ggplot(data = women_by_majors_test, aes(x = "", y = as.numeric(Engineering) , fill = Gender))+
+  geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y")
 
-pie_health <- ggplot(data = women_by_majors_test, aes(x = "", y = Health , fill = Gender))+
-  geom_bar(stat = "identity")+
+pie_health <- ggplot(data = women_by_majors_test, aes(x = "", y = as.numeric(Health) , fill = Gender))+
+  geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y")
 
-pie_physical <- ggplot(data = women_by_majors_test, aes(x = "", y = Physical_Sciences , fill = Gender))+
-  geom_bar(stat = "identity")+
+pie_physical <- ggplot(data = women_by_majors_test, aes(x = "", y = as.numeric(Physical_Sciences), fill = Gender))+
+  geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y")
-                      
-                      
-          
