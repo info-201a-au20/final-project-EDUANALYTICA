@@ -73,7 +73,6 @@ desc_chart_diff_majors <- paste0(
 
 
 # the proportion of major categories by genders
-# women_by_majors <- women_stem %>%
 genders_by_majors <- women_stem %>%
   select(Major_category, Total, Men, Women, ShareWomen) %>%
   group_by(Major_category) %>%
@@ -99,7 +98,9 @@ pie_biology <- ggplot(data = majors_by_genders,
                       aes(x = "", y = as.numeric(Biology_LifeSciences),
                           fill = Gender)) +
   geom_bar(stat = "identity", color = "black") +
-  coord_polar(theta = "y") +
+  coord_polar(theta = "y") + 
+  geom_text(aes(label = paste(round(as.numeric(Biology_LifeSciences), 1), "%")),
+            position = position_stack(vjust = 0.5)) +
   labs(
     title = "Proportion of males and females in Biology Life Sciences field",
     x = "",
@@ -112,6 +113,8 @@ pie_computers <- ggplot(data = majors_by_genders,
                             fill = Gender)) +
   geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y") +
+  geom_text(aes(label = paste(round(as.numeric(Computers_Mathematics), 1), "%")),
+            position = position_stack(vjust = 0.5)) +
   labs(
     title = "Proportion of males and females in Computers Mathematics field",
     x = "",
@@ -124,6 +127,8 @@ pie_engineering <- ggplot(data = majors_by_genders,
                               fill = Gender)) +
   geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y") +
+  geom_text(aes(label = paste(round(as.numeric(Engineering), 1), "%")),
+            position = position_stack(vjust = 0.5)) +
   labs(
     title = "Proportion of males and females in Engineering field",
     x = "",
@@ -135,6 +140,8 @@ pie_health <- ggplot(data = majors_by_genders,
                      aes(x = "", y = as.numeric(Health), fill = Gender)) +
   geom_bar(stat = "identity", color = "black") +
   coord_polar(theta = "y") +
+  geom_text(aes(label = paste(round(as.numeric(Health), 1), "%")),
+            position = position_stack(vjust = 0.5)) +
   labs(
     title = "Proportion of males and females in Health field",
     x = "",
@@ -146,6 +153,8 @@ pie_physical <- ggplot(data = majors_by_genders,
                        aes(x = "", y = as.numeric(Physical_Sciences), 
                            fill = Gender)) +
   geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = paste(round(as.numeric(Physical_Sciences), 1), "%")),
+            position = position_stack(vjust = 0.5)) +
   coord_polar(theta = "y") +
   labs(
     title = "Proportion of males and females in Physical Sciences field",
