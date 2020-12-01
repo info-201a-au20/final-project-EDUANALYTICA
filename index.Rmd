@@ -15,7 +15,6 @@ source("scripts/summary_table.R")
 source("scripts/women_in_stem.R")
 source("scripts/employment_by_majors.R")
 source("scripts/wages_by_major.R")
-source("scripts/women_in_stem2.R")
 ```
 
 ## How Level and Field of Education affect salary, Gender disparities in Majors

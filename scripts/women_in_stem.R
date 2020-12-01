@@ -93,7 +93,7 @@ majors_by_genders <- data.frame(t(genders_by_majors)) %>%
   slice(2:3) %>%
   mutate(Gender = c("Male" = "Male", "Female" = "Female"))
 
-# pie chart: comparsion between males and females in Biology Life Sciences field
+# pie chart: comparison between males and females in Biology Life Sciences field
 pie_biology <- ggplot(data = majors_by_genders,
                       aes(x = "", y = as.numeric(Biology_LifeSciences),
                           fill = Gender)) +
@@ -107,7 +107,7 @@ pie_biology <- ggplot(data = majors_by_genders,
     y = ""
   )
 
-# pie chart: comparsion between males and females in computers and math field
+# pie chart: comparison between males and females in computers and math field
 pie_computers <- ggplot(data = majors_by_genders, 
                         aes(x = "", y = as.numeric(Computers_Mathematics), 
                             fill = Gender)) +
@@ -148,7 +148,7 @@ pie_health <- ggplot(data = majors_by_genders,
     y = ""
   )
 
-# pie chart: comparsion between males and females in Physical Sciences field
+# pie chart: comparison between males and females in Physical Sciences field
 pie_physical <- ggplot(data = majors_by_genders, 
                        aes(x = "", y = as.numeric(Physical_Sciences), 
                            fill = Gender)) +
