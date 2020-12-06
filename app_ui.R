@@ -1,5 +1,6 @@
 library("Shiny")
-
+library("plotly")
+library("ggplot2")
 
 intro_sidebar_content 
 intro_main_content
