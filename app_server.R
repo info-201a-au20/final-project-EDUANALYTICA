@@ -40,11 +40,11 @@ median_salary_grad_students <- grad_students %>%
 
 line_plot_data <- left_join(median_salary_recent_grad, median_salary_grad_students)
 
-line_plot = ggplot(line_plot_data) +
-  geom_line(aes(x = Major_category, y = medianRecent), color = "blue") #+
-  # geom_line(aes(y = medianGrad), color = "red", linetype = "twodash") +
-  # xlab("Major categories") +
-  # ylab("Salary median")
+line_plot = ggplot(line_plot_data, aes(x = Major_category)) +
+  geom_line(aes(y = medianRecent), color = "blue", linetype = "twodash") +
+  geom_line(aes(y = medianGrad), color = "red", linetype = "twodash") +
+  xlab("Major categories") +
+  ylab("Salary median")
 
 ggplot(economics, aes(x=date)) + 
   geom_line(aes(y = psavert), color = "darkred") + 
