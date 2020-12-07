@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library(plotly)
 # WIDGET NAMING CONVENTIONS CHARTTYPE_WIDGET_#
 
 # INTRO - BRENDA'S SECTION
@@ -38,17 +39,25 @@ median_salary_grad_students <- grad_students %>%
     medianGrad = mean(Grad_median, na.rm = TRUE)
   )
 
-line_plot_data <- left_join(median_salary_recent_grad, median_salary_grad_students)
+line_plot_data <- left_join(median_salary_recent_grad, 
+                            median_salary_grad_students)
 
-line_plot = ggplot(line_plot_data, aes(x = Major_category)) +
-  geom_line(aes(y = medianRecent), color = "blue", linetype = "twodash") +
-  geom_line(aes(y = medianGrad), color = "red", linetype = "twodash") +
-  xlab("Major categories") +
-  ylab("Salary median")
+line_plot <- plot_ly(line_plot_data, 
+                     x = ~Major_category, y = ~medianRecent, 
+                     name = "Median Salary of Recent graduates",
+                     type = "scatter", mode = 'lines',
+                     line = list(color = 'rgb(205, 12, 24', width = 3))
+line_plot <- line_plot %>%  
+  add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
+            line = list(color = 'rgb(22, 96, 167)', width = 3, dash = 'dash'))
+line_plot <- line_plot %>% 
+  layout(title = " The Comparison of Median Salary between Recent grad and grad",
+         xaxis = list(title = "Major Categories"),
+         yaxis = list(title = "Median Salaries in dollar"))
+line_plot
 
-ggplot(economics, aes(x=date)) + 
-  geom_line(aes(y = psavert), color = "darkred") + 
-  geom_line(aes(y = uempmed), color="steelblue", linetype="twodash")
+# implement UI: widget and side/main panel
+# widget - sliding bar: y = salary median
 
 
 
