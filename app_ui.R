@@ -12,25 +12,31 @@ library("ggplot2")
 source("app_server.R")
 line_plot_data
 
-salary_range_recent <- range(line_plot_data$salary_index)
-
+salary_range_recent <- range(line_plot_data$medianRecent)
 line_sidebar_content <- sidebarPanel(
-  h2("Select a range of median salary"),
-  # radioButtons("user_select", label = h3("Radio buttons"),
-  #              choices = list("Median of Recent Graduates" = 1, 
-  #                             "Average of Medians" = 2, 
-  #                             "Median of Graduates" = 3), 
-  #              selected = avg),
-  sliderInput(inputId = "LinePlot_SliderBar", label = h3("Slider Range"), 
-              min = salary_range_recent[1], max = salary_range_recent[2], 
-              value = salary_range_recent),
+  h2("Select a Median Salary Range - Recent Grads"),
+  sliderInput(inputId = "LinePlot_recent_SliderBar", label = h3("Slider Range"),
+              min = salary_range_recent[1], max = salary_range_recent[2],
+              value = salary_range_recent)
 )
 
+salary_range_grad <- range(line_plot_data$medianGrad)
+line_sidebar_content2 <- sidebarPanel(
+  h2("Select a Median Salary Range - Grads"),
+  sliderInput(inputId = "LinePlot_grad_SliderBar", label = h3("Slider Range"),
+              min = salary_range_grad[1], max = salary_range_grad[2],
+              value = salary_range_grad)
+)
 
 line_main_content <- mainPanel(
-  h1("The Comparison of Median Salary between Recent grad and grad"),
   plotlyOutput(
-    outputId = "LinePlot_widget"
+    outputId = "LinePlot_recent_widget"
+  )
+)
+
+line_main_content2 <- mainPanel(
+  plotlyOutput(
+    outputId = "LinePlot_grad_widget"
   )
 )
 
@@ -39,6 +45,10 @@ page_three <- tabPanel(
   sidebarLayout(
     line_sidebar_content,
     line_main_content
+  ),
+  sidebarLayout(
+    line_sidebar_content2,
+    line_main_content2
   )
 )
 

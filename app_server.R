@@ -122,26 +122,36 @@ my_server <- function(input, output){
   
   output$LinePlot_Range <- renderPrint({ input$LinePlot_SliderBar })
   
-  output$LinePlot_widget <- renderPlotly({
-    filtered_data <- line_plot_data %>% 
-      filter(salary_index > input$LinePlot_SliderBar[1] & salary_index < input$LinePlot_SliderBar[2])
+  output$LinePlot_recent_widget <- renderPlotly({
+    # salary_range_recent <- range(input$user_select)
+    filtered_recent <- line_plot_data %>% 
+      filter(medianRecent >= input$LinePlot_recent_SliderBar[1] & 
+               medianRecent <= input$LinePlot_recent_SliderBar[2])
     
     # plot here
-    LinePlot_widget <- plot_ly(filtered_data,
-            # x = ~Major_category, y = ~input$user_select,
+    # print 3 graphs on the same page, each graph has a slider range bar
+    LinePlot_widget_recent <- plot_ly(filtered_recent,
             x = ~Major_category, y = ~medianRecent,
-            # x = ~Major_category, y = ~avg,
             name = "Median Salary of Recent graduates",
             type = "scatter", mode = 'lines',
-            line = list(color = 'rgb(205, 12, 24', width = 3))
-    LinePlot_widget <- LinePlot_widget %>%
-      add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
-                line = list(color = 'rgb(22, 96, 167)', width = 3, mode = 'lines'))
-    LinePlot_widget <- LinePlot_widget %>%
-      add_trace(y = ~avg, name = "Mean of the Median Salary of Recent Grads and Grads",
-                line = list(color = 'rgb(220,220,220)', width = 3, dash = 'dash'))
-    LinePlot_widget <- LinePlot_widget %>%
-      layout(title = "The Comparison of Median Salary between Recent grad and grad",
+            line = list(color = 'rgb(205, 12, 24', width = 3)) %>% 
+      layout(title = "Median of Recent Graduates by Majors - Under 25-year-old",
+             xaxis = list(title = "Major Categories"),
+             yaxis = list(title = "Median Salaries in dollar"))
+  })
+  
+  output$LinePlot_grad_widget <- renderPlotly({
+    filtered_grad <- line_plot_data %>% 
+      filter(medianGrad >= input$LinePlot_grad_SliderBar[1] & 
+               medianGrad <= input$LinePlot_grad_SliderBar[2])
+
+    LinePlot_widget_grad <- plot_ly(filtered_grad,
+                                    x = ~Major_category, y = ~medianGrad,
+                                    name = "Median Salary of Graduates",
+                                    type = "scatter", mode = 'lines',
+                                    line = list(color = 'rgb(22, 96, 167)', 
+                                                width = 3, mode = 'lines')) %>%
+      layout(title = "Median of Graduates by Majors - Above 25-year-old",
              xaxis = list(title = "Major Categories"),
              yaxis = list(title = "Median Salaries in dollar"))
   })
