@@ -1,14 +1,58 @@
+# import libraries
+library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
+
 # WIDGET NAMING CONVENTIONS CHARTTYPE_WIDGET_#
 
 # INTRO - BRENDA'S SECTION
+intro_widget <- fluidPage(
+  navbarPage(tabPanel("Overview"),
+             tabPanel("B"),
+             tabPanel("c"),
+             tabPanel("D"),
+             tabPanel("E")
+    
+  ),
+  titlePanel("An Investment in Knowledge Pays The Best Interest"),
+  
+  h3("Background Information"),
+  
+  p(" People contemplate getting a college degree and they wonder if it is 
+  worth the resources.
+    Female identifying students in STEM fields deliberate about being the only 
+    females in their classes.
+    People who already have their undergraduate degrees are curious to know if 
+    getting a graduate degree in 
+     their field is a good investment.
+    Students are also curious to know about the probability of not getting a job
+    once they graduate from school 
+    with their majors"),
+  
+  h3("Questions answered"),
+  
+  p("This project seeks to provide insights about the education domain. 
+  It answers the following questions:"),
+  ("1. What are the gender disparities within majors?"),
+ ("2How much does a recent graduate earn as comapared to a graduate student?"),
+  ("3. What is the unemployment rate within different majors?"),
+ 
+ h3("Source of Data"),
+ 
+p("Our data is obtained from the American Community Survey Public Use Microdata
+  series and from the United States Census. The data contains grad students 
+    (ages 25+) as well as recent grads (ages < 28) with information about basic
+    earnings and labor force information."),
+h3("Abouts us"),
+h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon kan, Zheng Ruisun"),
+
+p("The authors are students at the University of Washington studying Informatics.
+  We are passionate about creating accessible information to help people make data
+  -driven decisions.")
 
 
-
-
-
+)
 
 
 
@@ -78,5 +122,5 @@ line_plot
 
 
 my_server <- function(input, output){
-  
+  intro_widget
 }
