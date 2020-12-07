@@ -38,15 +38,28 @@ line_main_content <- mainPanel(
   )
 )
 
+
+page_three <- tabPanel(
+  "Page 3",
+  sidebarLayout(
+    line_sidebar_content,
+    line_main_content
+  )
+)
+
+
 pie_sidebar_content <- sidebarPanel(
   selectInput(
     inputId = "pie_widget_one",
     label = "Major Category:",
-    choice = major_category
+    choice = major_category,
+    selected = "Biology & Life Science"
+    )
   )
-)
+
+
 pie_main_content <- mainPanel(
-  plotOutput("pieplot")
+  plotlyOutput("pieplot")
 )
 
 page_two <- tabPanel(
@@ -54,14 +67,6 @@ page_two <- tabPanel(
   sidebarLayout(
     pie_sidebar_content,
     pie_main_content
-  )
-)
-
-page_three <- tabPanel(
-  "Page 3",
-  sidebarLayout(
-    line_sidebar_content,
-    line_main_content
   )
 )
 
@@ -76,6 +81,7 @@ page_three <- tabPanel(
 
 
 my_ui <- navbarPage(
+  "FINAL PROJECT",
   page_two,
   page_three
 )
