@@ -1,31 +1,5 @@
 library("shiny")
-<<<<<<< HEAD
 library("dplyr")
-
-women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
-major_category <- women_in_stem %>% 
-  group_by(Major_category) %>% 
-  summarize() %>% 
-  pull(Major_category)
-
-# intro_sidebar_content 
-# intro_main_content
-
-pie_sidebar_content <- sidebarPanel(
-  selectInput(
-    inputId = "pie_widget_one",
-    label = "Major Category:",
-    choice = major_category
-  )
-)
-pie_main_content <- mainPanel(
-  plotOutput("pieplot")
-)
-
-# line_sidebar_content
-# line_main_content
-# 
-=======
 library("plotly")
 library("ggplot2")
 
@@ -61,6 +35,26 @@ line_main_content <- mainPanel(
   )
 )
 
+women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
+major_category <- women_in_stem %>% 
+  group_by(Major_category) %>% 
+  summarize() %>% 
+  pull(Major_category)
+
+# intro_sidebar_content 
+# intro_main_content
+
+pie_sidebar_content <- sidebarPanel(
+  selectInput(
+    inputId = "pie_widget_one",
+    label = "Major Category:",
+    choice = major_category
+  )
+)
+pie_main_content <- mainPanel(
+  plotOutput("pieplot")
+)
+
 page_three <- tabPanel(
   "Page 3",
   sidebarLayout(
@@ -69,25 +63,15 @@ page_three <- tabPanel(
   )
 )
 
->>>>>>> aea6c04282b9b72b9eb24475ab10758f6c40abb1
 # bar_sidebar_content
 # bar_main_content
 # 
 # conc_sidebar_content
 # conc_main_content
-<<<<<<< HEAD
 # 
 # 
-
-my_ui <- navbarPage(
-  tabPanel(
-    pie_sidebar_content
-  )
-=======
-
 
 
 my_ui <- navbarPage(
   page_three
->>>>>>> aea6c04282b9b72b9eb24475ab10758f6c40abb1
 )
