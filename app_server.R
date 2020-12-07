@@ -101,6 +101,7 @@ output$pieplot <- renderPlot({
   #                     showticklabels = FALSE),
   #        yaxis = list(showgrid = FALSE, zeroline = FALSE,
   #                     showticklabels = FALSE))
+})
 
 # RECENTGRAD vs GRAD line chart - LEON'S SECTION
 recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)

@@ -5,13 +5,17 @@ library("ggplot2")
 
 # intro_sidebar_content 
 # intro_main_content
-# 
-# pie_sidebar_content
-# pie_main_content
 
-# import combined dataframe from server.r
 source("app_server.R")
 line_plot_data
+
+women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
+major_category <- women_in_stem %>% 
+  group_by(Major_category) %>% 
+  summarize() %>% 
+  pull(Major_category)
+
+# import combined dataframe from server.r
 
 salary_range_recent <- range(line_plot_data$salary_index)
 
@@ -27,22 +31,12 @@ line_sidebar_content <- sidebarPanel(
               value = salary_range_recent),
 )
 
-
 line_main_content <- mainPanel(
   h1("The Comparison of Median Salary between Recent grad and grad"),
   plotlyOutput(
     outputId = "LinePlot_widget"
   )
 )
-
-women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
-major_category <- women_in_stem %>% 
-  group_by(Major_category) %>% 
-  summarize() %>% 
-  pull(Major_category)
-
-# intro_sidebar_content 
-# intro_main_content
 
 pie_sidebar_content <- sidebarPanel(
   selectInput(
@@ -55,6 +49,14 @@ pie_main_content <- mainPanel(
   plotOutput("pieplot")
 )
 
+page_two <- tabPanel(
+  "Page 2",
+  sidebarLayout(
+    pie_sidebar_content,
+    pie_main_content
+  )
+)
+
 page_three <- tabPanel(
   "Page 3",
   sidebarLayout(
@@ -62,6 +64,7 @@ page_three <- tabPanel(
     line_main_content
   )
 )
+
 
 # bar_sidebar_content
 # bar_main_content
@@ -73,5 +76,6 @@ page_three <- tabPanel(
 
 
 my_ui <- navbarPage(
+  page_two,
   page_three
 )
