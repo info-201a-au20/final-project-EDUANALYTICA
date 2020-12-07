@@ -83,20 +83,25 @@ median_salary_grad_students <- grad_students %>%
   )
 
 line_plot_data <- left_join(median_salary_recent_grad,
-                            median_salary_grad_students)
+                            median_salary_grad_students) %>% 
+  mutate(avg = (medianRecent + medianGrad) / 2) %>% 
+  mutate(salary_index = seq(30000,96250, by = 4375))
 
-LinePlot_widget <- plot_ly(line_plot_data,
-                     x = ~Major_category, y = ~medianRecent,
-                     name = "Median Salary of Recent graduates",
-                     type = "scatter", mode = 'lines',
-                     line = list(color = 'rgb(205, 12, 24', width = 3))
-LinePlot_widget <- LinePlot_widget %>%
-  add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
-            line = list(color = 'rgb(22, 96, 167)', width = 3, dash = 'dash'))
-LinePlot_widget <- LinePlot_widget %>%
-  layout(title = "The Comparison of Median Salary between Recent grad and grad",
-         xaxis = list(title = "Major Categories"),
-         yaxis = list(title = "Median Salaries in dollar"))
+# LinePlot_widget <- plot_ly(line_plot_data,
+#                      x = ~Major_category, y = ~medianRecent,
+#                      name = "Median Salary of Recent graduates",
+#                      type = "scatter", mode = 'lines',
+#                      line = list(color = 'rgb(205, 12, 24', width = 3))
+# LinePlot_widget <- LinePlot_widget %>%
+#   add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
+#             line = list(color = 'rgb(22, 96, 167)', width = 3, mode = 'lines'))
+# LinePlot_widget <- LinePlot_widget %>% 
+#   add_trace(y = ~avg, name = "Mean of the Median Salary of Recent Grads and Grads",
+#             line = list(color = 'rgb(220,220,220)', width = 3, dash = 'dash'))
+# LinePlot_widget <- LinePlot_widget %>%
+#   layout(title = "The Comparison of Median Salary between Recent grad and grad",
+#          xaxis = list(title = "Major Categories"),
+#          yaxis = list(title = "Median Salaries in dollar"))
 
 
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
@@ -117,5 +122,27 @@ my_server <- function(input, output){
   
   output$LinePlot_Range <- renderPrint({ input$LinePlot_SliderBar })
   
-  output$LinePlot_widget <- renderPlotly({ LinePlot_widget })
+  output$LinePlot_widget <- renderPlotly({
+    filtered_data <- line_plot_data %>% 
+      filter(salary_index > input$LinePlot_SliderBar[1] & salary_index < input$LinePlot_SliderBar[2])
+    
+    # plot here
+    LinePlot_widget <- plot_ly(filtered_data,
+            # x = ~Major_category, y = ~input$user_select,
+            x = ~Major_category, y = ~medianRecent,
+            # x = ~Major_category, y = ~avg,
+            name = "Median Salary of Recent graduates",
+            type = "scatter", mode = 'lines',
+            line = list(color = 'rgb(205, 12, 24', width = 3))
+    LinePlot_widget <- LinePlot_widget %>%
+      add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
+                line = list(color = 'rgb(22, 96, 167)', width = 3, mode = 'lines'))
+    LinePlot_widget <- LinePlot_widget %>%
+      add_trace(y = ~avg, name = "Mean of the Median Salary of Recent Grads and Grads",
+                line = list(color = 'rgb(220,220,220)', width = 3, dash = 'dash'))
+    LinePlot_widget <- LinePlot_widget %>%
+      layout(title = "The Comparison of Median Salary between Recent grad and grad",
+             xaxis = list(title = "Major Categories"),
+             yaxis = list(title = "Median Salaries in dollar"))
+  })
 }
