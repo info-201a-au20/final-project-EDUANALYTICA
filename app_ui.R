@@ -24,9 +24,9 @@ intro_main_content <- mainPanel(
     
     p("This project seeks to provide insights about the education domain. 
     It answers the following questions:"),
-    ("1. What are the gender disparities within majors?"),
-    ("2How much does a recent graduate earn as comapared to a graduate student?"),
-    ("3. What is the unemployment rate within different majors?"),
+    p("1. What are the gender disparities within majors?"),
+    p("2. How much does a recent graduate earn as comapared to a graduate student?"),
+    p("3. What is the unemployment rate within different majors?"),
     
     h3("Source of Data"),
     
@@ -35,19 +35,19 @@ intro_main_content <- mainPanel(
       (ages 25+) as well as recent grads (ages < 28) with information about basic
       earnings and labor force information."),
     h3("Abouts us"),
-    h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon kan, Zhengrui Sun"),
+    h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
     
     p("The authors are students at the University of Washington studying Informatics.
     We are passionate about creating accessible information to help people make data
     -driven decisions.")
 )
+
 page_intro <- tabPanel(
   "Introduction",
   fluidPage(
     intro_main_content
   )
 )
-
 
 women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
 major_category <- women_in_stem %>% 
@@ -66,7 +66,7 @@ pie_main_content <- mainPanel(
   plotlyOutput("pieplot")
 )
 
-pie_page <- tabPanel(
+page_one <- tabPanel(
   "Bar Chart",
   sidebarLayout(
   
@@ -110,7 +110,7 @@ line_main_content2 <- mainPanel(
     outputId = "LinePlot_grad_widget"
   )
 )
-page_three <- tabPanel(
+page_two <- tabPanel(
   "Line plots",
   sidebarLayout(
     line_sidebar_content,
@@ -124,8 +124,26 @@ page_three <- tabPanel(
 
 
 
-# bar_sidebar_content
-# bar_main_content
+bar_sidebar_content <- sidebarPanel(
+selectInput(inputId = "x_var",
+            label = "Select a major",
+            choices = major_categories$Major_category)
+
+)
+
+bar_main_content <- mainPanel(
+  h1("Comparison of Unemployed and Employed Rates of Recent Graduates based
+     on major"),
+  plotlyOutput(
+    outputId = "BarPlot"
+  )
+)
+
+page_three <- tabPanel(
+  "Bar Chart",
+  sidebarLayout(bar_sidebar_content, bar_main_content)
+)
+  
 # 
 # conc_sidebar_content
 # conc_main_content
@@ -136,7 +154,8 @@ page_three <- tabPanel(
 
 my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
-  pie_page,
+  page_one,
+  page_two,
   page_three
 
 )

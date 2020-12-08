@@ -6,58 +6,7 @@ library("ggplot2")
 library("plotly")
 library("knitr")
 
-
-# INTRO - BRENDA'S SECTION
-# ALL CODE BELOW HAS BEEN REMMOVED TO app_ui.R
-intro_widget <- fluidPage(
-  navbarPage(tabPanel("Overview"),
-             tabPanel("B"),
-             tabPanel("c"),
-             tabPanel("D"),
-             tabPanel("E")
-    
-  ),
-  titlePanel("An Investment in Knowledge Pays The Best Interest"),
-  
-  h3("Background Information"),
-  
-  p(" People contemplate getting a college degree and they wonder if it is 
-  worth the resources.
-    Female identifying students in STEM fields deliberate about being the only 
-    females in their classes.
-    People who already have their undergraduate degrees are curious to know if 
-    getting a graduate degree in 
-     their field is a good investment.
-    Students are also curious to know about the probability of not getting a job
-    once they graduate from school 
-    with their majors"),
-  
-  h3("Questions answered"),
-  
-  p("This project seeks to provide insights about the education domain. 
-  It answers the following questions:"),
-  p("1. What are the gender disparities within majors?"),
-  p("2. How much does a recent graduate earn as comapared to a graduate student?"),
-  p("3. What is the unemployment rate within different majors?"),
- 
- h3("Source of Data"),
- 
-p("Our data is obtained from the American Community Survey Public Use Microdata
-  series and from the United States Census. The data contains grad students 
-    (ages 25+) as well as recent grads (ages < 28) with information about basic
-    earnings and labor force information."),
-h3("Abouts us"),
-h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon kan, Zhengrui Sun"),
-
-p("The authors are students at the University of Washington studying Informatics.
-  We are passionate about creating accessible information to help people make data
-  -driven decisions.")
-)
-
-
-
-
-# RECENTGRAD vs GRAD line chart - LEON'S SECTION
+# Wrangle data for line charts - LEON'S SECTION
 recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
 grad_students <- read.csv("data/grad-students.csv", stringsAsFactors = FALSE)
 
@@ -80,6 +29,16 @@ line_plot_data <- left_join(median_salary_recent_grad,
   mutate(salary_index = seq(30000,96250, by = 4375))
 
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
+recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
+
+major_categories <- recent_grad %>%
+  group_by(Major_category) %>%
+  summarise(
+    total_employed = sum(Employed, na.rm = TRUE),
+    total_unemployed = sum(Unemployed, na.rm = TRUE)
+  )
+
+
 
 
 
@@ -92,6 +51,21 @@ line_plot_data <- left_join(median_salary_recent_grad,
 
 # Server function
 my_server <- function(input, output){
+  #Nicole's bar plot code
+  output$BarPlot <- renderPlotly({ 
+    BarPlot <- plot_ly(
+      name = "Employed",
+      data = major_categories,
+      x = ~total_employed,
+      y = input$x_var,
+      type = "bar",
+      orientation = "h"
+    ) 
+    BarPlot <- BarPlot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
+    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), barmode = 'group')
+    
+  })
+
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
     
