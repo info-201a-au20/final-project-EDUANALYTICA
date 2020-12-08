@@ -114,13 +114,18 @@ page_two <- tabPanel(
   )
 )
 
+major_categories <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
+  group_by(Major) %>% 
+  summarize() %>% 
+  pull(Major)
 
+  
 
 bar_sidebar_content <- sidebarPanel(
 selectInput(inputId = "x_var",
             label = "Select a major",
-            choices = major_categories$Major_category)
-
+            choices = major_categories,
+            selected = "Engineering")
 )
 
 bar_main_content <- mainPanel(
