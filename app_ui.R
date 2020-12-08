@@ -180,15 +180,15 @@ page_four <- tabPanel(
 # 
 
 page_four_main_content <- mainPanel(
-  h3("Abouts Us"),
+  h3("About Us"),
   h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
   p("The authors are students at the University of Washington studying Informatics.
-    We are passionate about creating accessible information to help people make data
-    -driven decisions.")
+    We are passionate about creating accessible information to help people make 
+    data-driven decisions.")
 )
   
 page_five <- tabPanel(
-  id = "aboutus",
+  # id = "aboutus",
   "About Us",
   fluidPage(page_four_main_content)
 )
