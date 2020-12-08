@@ -155,10 +155,19 @@ page_four <- tabPanel(
     the most significant difference between the amount of men and women."),
   h3("How much does a recent undergraduate earn as comapared to a graduate student?"),
   plotlyOutput("salary_difference"),
-  p("A recent undergraduate "),
+  p("By comparing the salaries of recent undergraduates and those who have a 
+    graduate degree within different major categories, we found that people who 
+    earned graduate degrees make significantly more in all major categories.
+    For example, in the chart above, an engineering recent undergraduate earns
+    around $57k/per year while an engineering major with a graduate degree can earn up to 
+    $94k/per year."),
   h3("What is the unemployment rate within different majors?"),
   plotlyOutput("employment_rate"),
-  p()
+  p("We compared the number of unemployment and employed rates of different
+    major categories and found that engineering, health, and humanities & liberal arts
+    have the highest unemployment rate as well as employed rate. However,
+    business runs as an outlier with the highest employment and unemployment rate, almost having
+    5000 more employed people than engineering.")
 )
 # 
 # conc_sidebar_content
