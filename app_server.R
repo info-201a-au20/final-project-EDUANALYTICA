@@ -124,23 +124,16 @@ my_server <- function(input, output){
     
     num_men <- read.csv("data/women-stem.csv",
                         stringsAsFactors = FALSE) %>%
-      filter(Major_category == input$pie_widget_one) %>%
-      summarize(
-        sum_men = sum(Men, na.rm = TRUE),
-        sum_women = sum(Women, na.rm = TRUE)
-      ) %>%
+      filter(major == input$pie_widget_one) %>%
       pull(
-        sum_men
+        Men
       )
     
     num_women <- read.csv("data/women-stem.csv",
-                          stringsAsFactors = FALSE) %>%
-      filter(Major_category == input$pie_widget_one) %>%
-      summarize(
-        sum_women = sum(Women, na.rm = TRUE)
-      ) %>%
+                        stringsAsFactors = FALSE) %>%
+      filter(major == input$pie_widget_one) %>%
       pull(
-        sum_women
+        Women
       )
     
     gender <- c("Men", "Women")
@@ -155,8 +148,14 @@ my_server <- function(input, output){
             text = ~paste0(gender, ": ", num),
             marker = list(colors = colors,line = list(color = '#FFFFFF',
                                                       width = 1)),
-            showlegend = FALSE) 
+            showlegend = FALSE) %>% 
+      layout(
+        title = ~paste0("Percentage of Men and Women in ", input$pie_widget_one)
+      )
+    
   })
+  
+    
   
   
   # Leon's part: line plot
