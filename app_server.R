@@ -29,11 +29,6 @@ line_plot_data <- left_join(median_salary_recent_grad,
   mutate(salary_index = seq(30000,96250, by = 4375))
 
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
-recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
-
-
-major_categories <- recent_grad %>%
-  group_by(Major_category)
 
 # x_axis_max <- recent_grad %>%
 #   summarise(
@@ -47,11 +42,11 @@ major_categories <- recent_grad %>%
 my_server <- function(input, output){
   #Nicole's bar plot code
   output$BarPlot <- renderPlotly({ 
-    recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
-      filter(Major_category == input$x_var) %>%
+      recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
+      filter(Major == input$x_var) %>%
       summarize(
-        total_unemployed = sum(Unemployed, na.rm = TRUE),
-        total_employed = sum(Employed, na.rm = TRUE)
+        total_unemployed = Unemployment_rate,
+        total_employed = 1-total_unemployed
       )
     
     
