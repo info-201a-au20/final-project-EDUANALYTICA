@@ -150,6 +150,7 @@ page_four <- tabPanel(
   p(),
   plotlyOutput("gender_disparities"), 
   h3("How much does a recent graduate earn as comapared to a graduate student?"),
+  plotlyOutput("salary_difference"),
   p(),
   h3("What is the unemployment rate within different majors?"),
   p()
