@@ -5,10 +5,10 @@ library("ggplot2")
 
 intro_main_content <- mainPanel(
   
-    titlePanel("An Investment in Knowledge Pays The Best Interest"),
+    h1("An Investment in Knowledge Pays The Best Interest"),
     
+   
     h3("Background Information"),
-    
     p(" People contemplate getting a college degree and they wonder if it is 
     worth the resources.
       Female identifying students in STEM fields deliberate about being the only 
@@ -21,22 +21,22 @@ intro_main_content <- mainPanel(
       with their majors"),
     
     h3("Questions answered"),
-    
     p("This project seeks to provide insights about the education domain. 
     It answers the following questions:"),
-    p("1. What are the gender disparities within majors?"),
-    p("2. How much does a recent graduate earn as comapared to a graduate student?"),
-    p("3. What is the unemployment rate within different majors?"),
-    
+    tags$ol(
+      tags$li("What are the gender disparities within majors?"),
+      tags$li("How much does a recent graduate earn as comapared to a graduate student?"),
+      tags$li("What is the unemployment rate within different majors?"),
+    ),
+   
     h3("Source of Data"),
-    
     p("Our data is obtained from the American Community Survey Public Use Microdata
     series and from the United States Census. The data contains grad students 
       (ages 25+) as well as recent grads (ages < 28) with information about basic
       earnings and labor force information."),
+    
     h3("Abouts us"),
     h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
-    
     p("The authors are students at the University of Washington studying Informatics.
     We are passionate about creating accessible information to help people make data
     -driven decisions.")
