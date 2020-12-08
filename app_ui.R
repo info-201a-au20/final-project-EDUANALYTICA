@@ -128,8 +128,26 @@ page_three <- tabPanel(
 
 
 
-# bar_sidebar_content
-# bar_main_content
+bar_sidebar_content <- sidebarPanel(
+selectInput(inputId = "x_var",
+            label = "Select a major",
+            choices = major_categories$Major_category)
+
+)
+
+bar_main_content <- mainPanel(
+  h1("Comparison of Unemployed and Employed Rates of Recent Graduates based
+     on major"),
+  plotlyOutput(
+    outputId = "BarPlot"
+  )
+)
+
+page_one <- tabPanel(
+  "Bar Chart",
+  sidebarLayout(bar_sidebar_content, bar_main_content)
+)
+  
 # 
 # conc_sidebar_content
 # conc_main_content
@@ -141,6 +159,7 @@ page_three <- tabPanel(
 my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
   pie_page,
-  page_three
+  page_three,
+  page_one
 
 )

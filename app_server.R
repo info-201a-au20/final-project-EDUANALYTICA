@@ -81,6 +81,18 @@ line_plot_data <- left_join(median_salary_recent_grad,
 
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
 
+# MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
+recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
+
+major_categories <- recent_grad %>%
+  group_by(Major_category) %>%
+  summarise(
+    total_employed = sum(Employed, na.rm = TRUE),
+    total_unemployed = sum(Unemployed, na.rm = TRUE)
+  )
+
+
+
 
 
 
@@ -118,6 +130,21 @@ my_server <- function(input, output){
   #            xaxis = list(title = "Major Categories"),
   #            yaxis = list(title = "Median Salaries in dollar"))
   # })
+  
+  #Nicole's bar plot code
+  output$BarPlot <- renderPlotly({ 
+    BarPlot <- plot_ly(
+      name = "Employed",
+      data = major_categories,
+      x = ~total_employed,
+      y = input$x_var,
+      type = "bar",
+      orientation = "h"
+    ) 
+    BarPlot <- BarPlot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
+    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), barmode = 'group')
+    
+  })
   
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
