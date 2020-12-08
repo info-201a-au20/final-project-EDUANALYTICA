@@ -152,6 +152,7 @@ page_four <- tabPanel(
   h3("How much does a recent graduate earn as comapared to a graduate student?"),
   p(),
   h3("What is the unemployment rate within different majors?"),
+  plotlyOutput("employment_rate"),
   p()
 )
 # 

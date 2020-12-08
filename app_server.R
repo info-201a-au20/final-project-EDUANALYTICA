@@ -42,7 +42,7 @@ line_plot_data <- left_join(median_salary_recent_grad,
 my_server <- function(input, output){
   #Nicole's bar plot code
   output$BarPlot <- renderPlotly({ 
-      recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
+      recent_grad <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE) %>%
       filter(Major == input$x_var) %>%
       summarize(
         total_unemployed = Unemployment_rate,
@@ -161,4 +161,32 @@ my_server <- function(input, output){
       layout(yaxis = list(title = "Percent"), barmode = "group") 
     
   })
+  
+  output$employment_rate <- renderPlotly({
+    scatter_plot_data <- all_ages %>%
+      group_by(Major_category) %>%
+      summarize(
+        employed = sum(Employed, na.rm = TRUE) / 1000,
+        unemployed = sum(Unemployed, na.rm = TRUE) / 1000,
+        median = Median / 1000
+      )
+    
+    scatter_plot <- ggplot(data = scatter_plot_data) +
+      geom_point(
+        mapping = aes(
+          x = employed, y = unemployed, color = Major_category,
+          size = median
+        )
+      ) +
+      labs(
+        title = "The Post-Graduation Employment Staus by College Major Categories",
+        subtitle = "",
+        color = "Major Category",
+        size = "Dot size is median salary(1=$1000)",
+        x = "Number of unemployed students (1 = 1000 students)",
+        y = "Number of employed students (1 = 1000 students)"
+      )
+    scatter_plot
+  })
 }
+
