@@ -50,16 +50,14 @@ page_intro <- tabPanel(
 )
 
 women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
-major_category <- women_in_stem %>% 
-  group_by(Major_category) %>% 
-  summarize() %>% 
-  pull(Major_category)
+major <- women_in_stem %>% 
+  pull(Major)
 
 pie_sidebar_content <- sidebarPanel(
   selectInput(
     inputId = "pie_widget_one",
-    label = "Major Category:",
-    choice = major_category
+    label = "Major:",
+    choice = major
   )
 )
 pie_main_content <- mainPanel(
