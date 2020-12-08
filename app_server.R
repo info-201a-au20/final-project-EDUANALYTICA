@@ -36,9 +36,9 @@ intro_widget <- fluidPage(
   
   p("This project seeks to provide insights about the education domain. 
   It answers the following questions:"),
-  ("1. What are the gender disparities within majors?"),
- ("2How much does a recent graduate earn as comapared to a graduate student?"),
-  ("3. What is the unemployment rate within different majors?"),
+  p("1. What are the gender disparities within majors?"),
+  p("2. How much does a recent graduate earn as comapared to a graduate student?"),
+  p("3. What is the unemployment rate within different majors?"),
  
  h3("Source of Data"),
  
@@ -92,33 +92,6 @@ line_plot_data <- left_join(median_salary_recent_grad,
 
 # Server function
 my_server <- function(input, output){
-  
-  # output$LinePlot_Range <- renderPrint({ input$LinePlot_SliderBar })
-  # 
-  # output$LinePlot_widget <- renderPlotly({
-  #   filtered_data <- line_plot_data %>% 
-  #     filter(salary_index > input$LinePlot_SliderBar[1] & salary_index < input$LinePlot_SliderBar[2])
-  #   
-  #   # plot here
-  #   LinePlot_widget <- plot_ly(filtered_data,
-  #           # x = ~Major_category, y = ~input$user_select,
-  #           x = ~Major_category, y = ~medianRecent,
-  #           # x = ~Major_category, y = ~avg,
-  #           name = "Median Salary of Recent graduates",
-  #           type = "scatter", mode = 'lines',
-  #           line = list(color = 'rgb(205, 12, 24', width = 3))
-  #   LinePlot_widget <- LinePlot_widget %>%
-  #     add_trace(y = ~medianGrad, name = "Median Salary of Graduates",
-  #               line = list(color = 'rgb(22, 96, 167)', width = 3, mode = 'lines'))
-  #   LinePlot_widget <- LinePlot_widget %>%
-  #     add_trace(y = ~avg, name = "Mean of the Median Salary of Recent Grads and Grads",
-  #               line = list(color = 'rgb(220,220,220)', width = 3, dash = 'dash'))
-  #   LinePlot_widget <- LinePlot_widget %>%
-  #     layout(title = "The Comparison of Median Salary between Recent grad and grad",
-  #            xaxis = list(title = "Major Categories"),
-  #            yaxis = list(title = "Median Salaries in dollar"))
-  # })
-  
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
     
@@ -160,13 +133,15 @@ my_server <- function(input, output){
   
   
   # Leon's part: line plot
+  # print the slider bar for recent-grad
   output$LinePlot_Range <- renderPrint({ input$LinePlot_SliderBar })
+  
+  # display the line plot associated with recent_grad dataset
   output$LinePlot_recent_widget <- renderPlotly({
-    # salary_range_recent <- range(input$user_select)
     filtered_recent <- line_plot_data %>% 
       filter(medianRecent >= input$LinePlot_recent_SliderBar[1] & 
                medianRecent <= input$LinePlot_recent_SliderBar[2])
-    
+    # generate the plot
     LinePlot_widget_recent <- plot_ly(filtered_recent,
             x = ~Major_category, y = ~medianRecent,
             name = "Median Salary of Recent graduates",
@@ -177,11 +152,12 @@ my_server <- function(input, output){
              yaxis = list(title = "Median Salaries in dollar"))
   })
   
+  # display the line plot associated with grad_students dataset
   output$LinePlot_grad_widget <- renderPlotly({
     filtered_grad <- line_plot_data %>% 
       filter(medianGrad >= input$LinePlot_grad_SliderBar[1] & 
                medianGrad <= input$LinePlot_grad_SliderBar[2])
-
+    # generate the plot
     LinePlot_widget_grad <- plot_ly(filtered_grad,
                                     x = ~Major_category, y = ~medianGrad,
                                     name = "Median Salary of Graduates",
@@ -193,4 +169,3 @@ my_server <- function(input, output){
              yaxis = list(title = "Median Salaries in dollar"))
   })
 }
-

@@ -3,9 +3,6 @@ library("dplyr")
 library("plotly")
 library("ggplot2")
 
-# intro_sidebar_content 
-# intro_main_content
-
 intro_main_content <- mainPanel(
   
     titlePanel("An Investment in Knowledge Pays The Best Interest"),
@@ -58,9 +55,6 @@ major_category <- women_in_stem %>%
   summarize() %>% 
   pull(Major_category)
 
-# intro_sidebar_content 
-# intro_main_content
-
 pie_sidebar_content <- sidebarPanel(
   selectInput(
     inputId = "pie_widget_one",
@@ -86,19 +80,21 @@ pie_page <- tabPanel(
 source("app_server.R")
 line_plot_data
 
+# store the range - recent_grad
 salary_range_recent <- range(line_plot_data$medianRecent)
 line_sidebar_content <- sidebarPanel(
-  h2("Select a Median Salary Range - Recent Grads"),
-  sliderInput(inputId = "LinePlot_recent_SliderBar", label = h3("Slider Range"),
+  h2("Select a Median Salary Range - Recent Graduated Attendees"),
+  sliderInput(inputId = "LinePlot_recent_SliderBar",label = "",
               min = round(salary_range_recent[1], digits = 0), 
               max = round(salary_range_recent[2], digits = 0),
               value = salary_range_recent)
 )
 
+# store the range - grad_students
 salary_range_grad <- range(line_plot_data$medianGrad)
 line_sidebar_content2 <- sidebarPanel(
-  h2("Select a Median Salary Range - Grads"),
-  sliderInput(inputId = "LinePlot_grad_SliderBar", label = h3("Slider Range"),
+  h2("Select a Median Salary Range - Graduate School Attendees"),
+  sliderInput(inputId = "LinePlot_grad_SliderBar", label = "",
               min = round(salary_range_grad[1], digits = 0), 
               max = round(salary_range_grad[2], digits = 0),
               value = salary_range_grad)
