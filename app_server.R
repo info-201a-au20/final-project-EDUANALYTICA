@@ -31,21 +31,15 @@ line_plot_data <- left_join(median_salary_recent_grad,
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
 recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
 
+
 major_categories <- recent_grad %>%
-  group_by(Major_category) %>%
-  summarise(
-    total_employed = sum(Employed, na.rm = TRUE),
-    total_unemployed = sum(Unemployed, na.rm = TRUE)
-  )
+  group_by(Major_category)
 
-
-
-
-
-
-
-
-
+# x_axis_max <- recent_grad %>%
+#   summarise(
+#     max_employed = max(Employed, na.rm = TRUE)) %>%
+#   pull(x_axis_max)
+  
 # CONCLUSION TAKEAWAYS - IAN'S SECTION
 
 
@@ -53,16 +47,25 @@ major_categories <- recent_grad %>%
 my_server <- function(input, output){
   #Nicole's bar plot code
   output$BarPlot <- renderPlotly({ 
+    recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
+      filter(Major_category == input$x_var) %>%
+      summarize(
+        total_unemployed = sum(Unemployed, na.rm = TRUE),
+        total_employed = sum(Employed, na.rm = TRUE)
+      )
+    
+    
     BarPlot <- plot_ly(
       name = "Employed",
-      data = major_categories,
+      data = recent_grad,
       x = ~total_employed,
       y = input$x_var,
       type = "bar",
       orientation = "h"
     ) 
     BarPlot <- BarPlot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
-    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), barmode = 'group')
+    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), 
+                                  barmode = 'group')
     
   })
 
@@ -71,23 +74,16 @@ my_server <- function(input, output){
     
     num_men <- read.csv("data/women-stem.csv",
                         stringsAsFactors = FALSE) %>%
-      filter(Major_category == input$pie_widget_one) %>%
-      summarize(
-        sum_men = sum(Men, na.rm = TRUE),
-        sum_women = sum(Women, na.rm = TRUE)
-      ) %>%
+      filter(major == input$pie_widget_one) %>%
       pull(
-        sum_men
+        Men
       )
     
     num_women <- read.csv("data/women-stem.csv",
-                          stringsAsFactors = FALSE) %>%
-      filter(Major_category == input$pie_widget_one) %>%
-      summarize(
-        sum_women = sum(Women, na.rm = TRUE)
-      ) %>%
+                        stringsAsFactors = FALSE) %>%
+      filter(major == input$pie_widget_one) %>%
       pull(
-        sum_women
+        Women
       )
     
     gender <- c("Men", "Women")
@@ -102,8 +98,14 @@ my_server <- function(input, output){
             text = ~paste0(gender, ": ", num),
             marker = list(colors = colors,line = list(color = '#FFFFFF',
                                                       width = 1)),
-            showlegend = FALSE) 
+            showlegend = FALSE) %>% 
+      layout(
+        title = ~paste0("Percentage of Men and Women in ", input$pie_widget_one)
+      )
+    
   })
+  
+    
   
   
   # Leon's part: line plot
