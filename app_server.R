@@ -79,26 +79,17 @@ line_plot_data <- left_join(median_salary_recent_grad,
   mutate(avg = (medianRecent + medianGrad) / 2) %>% 
   mutate(salary_index = seq(30000,96250, by = 4375))
 
-# MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
 
 # MAJOR UNEMPLOYED vs EMPLOYED bar plot - NICOLE'S SECTION
-recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
 
 major_categories <- recent_grad %>%
-  group_by(Major_category) %>%
-  summarise(
-    total_employed = sum(Employed, na.rm = TRUE),
-    total_unemployed = sum(Unemployed, na.rm = TRUE)
-  )
+  group_by(Major_category)
 
-
-
-
-
-
-
-
-
+# x_axis_max <- recent_grad %>%
+#   summarise(
+#     max_employed = max(Employed, na.rm = TRUE)) %>%
+#   pull(x_axis_max)
+  
 # CONCLUSION TAKEAWAYS - IAN'S SECTION
 
 
@@ -133,16 +124,25 @@ my_server <- function(input, output){
   
   #Nicole's bar plot code
   output$BarPlot <- renderPlotly({ 
+    recent_grad <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
+      filter(Major_category == input$x_var) %>%
+      summarize(
+        total_unemployed = sum(Unemployed, na.rm = TRUE),
+        total_employed = sum(Employed, na.rm = TRUE)
+      )
+    
+    
     BarPlot <- plot_ly(
       name = "Employed",
-      data = major_categories,
+      data = recent_grad,
       x = ~total_employed,
       y = input$x_var,
       type = "bar",
       orientation = "h"
     ) 
     BarPlot <- BarPlot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
-    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), barmode = 'group')
+    BarPlot <- BarPlot %>% layout(xaxis = list(title = 'Count'), 
+                                  barmode = 'group')
     
   })
   
