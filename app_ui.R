@@ -1,13 +1,14 @@
 library("shiny")
+library("dplyr")
 library("plotly")
 library("ggplot2")
 
 # intro_sidebar_content 
 # intro_main_content
-# 
-# pie_sidebar_content
-# pie_main_content
 
+
+
+# Leon's part: lineplot
 # import combined dataframe from server.r
 source("app_server.R")
 line_plot_data
@@ -33,13 +34,11 @@ line_main_content <- mainPanel(
     outputId = "LinePlot_recent_widget"
   )
 )
-
 line_main_content2 <- mainPanel(
   plotlyOutput(
     outputId = "LinePlot_grad_widget"
   )
 )
-
 page_three <- tabPanel(
   "Page 3",
   sidebarLayout(
@@ -52,14 +51,47 @@ page_three <- tabPanel(
   )
 )
 
+# Jerry's part: pie chart
+women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
+major_category <- women_in_stem %>% 
+  group_by(Major_category) %>% 
+  summarize() %>% 
+  pull(Major_category)
+
+pie_sidebar_content <- sidebarPanel(
+  selectInput(
+    inputId = "pie_widget_one",
+    label = "Major Category:",
+    choice = major_category,
+    selected = "Biology & Life Science"
+    )
+  )
+
+
+pie_main_content <- mainPanel(
+  plotlyOutput("pieplot")
+)
+
+page_two <- tabPanel(
+  "Page 2",
+  sidebarLayout(
+    pie_sidebar_content,
+    pie_main_content
+  )
+)
+
+
 # bar_sidebar_content
 # bar_main_content
 # 
 # conc_sidebar_content
 # conc_main_content
-
+# 
+# 
 
 
 my_ui <- navbarPage(
+  "FINAL PROJECT",
+  page_two,
   page_three
 )
