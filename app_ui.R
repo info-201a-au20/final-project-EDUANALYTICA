@@ -44,6 +44,7 @@ intro_main_content <- mainPanel(
     We are passionate about creating accessible information to help people make data
     -driven decisions.")
 )
+
 page_intro <- tabPanel(
   "Introduction",
   fluidPage(
@@ -51,15 +52,11 @@ page_intro <- tabPanel(
   )
 )
 
-
 women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
 major_category <- women_in_stem %>% 
   group_by(Major_category) %>% 
   summarize() %>% 
   pull(Major_category)
-
-# intro_sidebar_content 
-# intro_main_content
 
 pie_sidebar_content <- sidebarPanel(
   selectInput(
@@ -72,7 +69,7 @@ pie_main_content <- mainPanel(
   plotlyOutput("pieplot")
 )
 
-pie_page <- tabPanel(
+page_one <- tabPanel(
   "Bar Chart",
   sidebarLayout(
   
@@ -114,7 +111,7 @@ line_main_content2 <- mainPanel(
     outputId = "LinePlot_grad_widget"
   )
 )
-page_three <- tabPanel(
+page_two <- tabPanel(
   "Line plots",
   sidebarLayout(
     line_sidebar_content,
@@ -143,7 +140,7 @@ bar_main_content <- mainPanel(
   )
 )
 
-page_one <- tabPanel(
+page_three <- tabPanel(
   "Bar Chart",
   sidebarLayout(bar_sidebar_content, bar_main_content)
 )
@@ -158,8 +155,8 @@ page_one <- tabPanel(
 
 my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
-  pie_page,
-  page_three,
-  page_one
+  page_one,
+  page_two,
+  page_three
 
 )
