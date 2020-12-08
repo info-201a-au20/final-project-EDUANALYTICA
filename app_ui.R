@@ -156,6 +156,6 @@ my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
   page_one,
   page_two,
-  page_three
-
+  page_three,
+  includeCSS("style.css")
 )
