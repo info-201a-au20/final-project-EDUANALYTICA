@@ -168,11 +168,12 @@ page_four_main_content <- mainPanel(
     -driven decisions.")
 )
   
-page_four <- tabPanel(
+page_five <- tabPanel(
   id = "aboutus",
   "About Us",
   fluidPage(page_four_main_content)
 )
+
 
 my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
@@ -180,5 +181,6 @@ my_ui <- navbarPage("FINAL PROJECT",
   page_two,
   page_three,
   page_four,
+  page_five,
   includeCSS("styles.css")
 )

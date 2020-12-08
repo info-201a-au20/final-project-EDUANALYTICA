@@ -144,20 +144,21 @@ my_server <- function(input, output){
   output$gender_disparities <- renderPlotly({
     
     gender_df <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE) %>% 
-      mutate(percent_diff = abs((1 - ShareWomen) - ShareWomen)) %>% 
+      mutate(percent_diff = abs((1 - ShareWomen) - ShareWomen),
+             ShareMen = 1 - ShareWomen) %>% 
       top_n(5, percent_diff)
     major <- gender_df %>% 
       pull(Major)
-    num_men <- gender_df %>% 
-      pull(Men)
-    num_women <- gender_df %>% 
-      pull(Women)
-    df <- data.frame(major, num_men, num_women)
+    percent_men <- gender_df %>% 
+      pull(ShareMen)
+    percent_women <- gender_df %>% 
+      pull(ShareWomen)
+    df <- data.frame(major, percent_men, percent_women)
     
-    plot_ly(df, y = ~major, x = ~num_men, type = "bar", 
-           name = "Men", orientation = "h") %>% 
-      add_trace(x = ~num_women, name = "Women") %>% 
-      layout(yaxis = list(title = "Number of People"), barmode = "group") 
+    plot_ly(df, x = ~major, y = ~percent_men, type = "bar", 
+           name = "Men") %>% 
+      add_trace(x = ~percent_women, name = "Women") %>% 
+      layout(yaxis = list(title = "Percent"), barmode = "group") 
     
   })
 }
