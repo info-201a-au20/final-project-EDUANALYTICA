@@ -63,6 +63,7 @@ my_server <- function(input, output){
                                   barmode = 'group')
     
   })
+  
 
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
@@ -159,7 +160,8 @@ my_server <- function(input, output){
            name = "Men") %>% 
       add_trace(y = ~percent_women, name = "Women") %>% 
       layout(title = "Top Five Majors of Gender Disparities",
-             yaxis = list(title = "Percentage in Major"), barmode = "stack") 
+             xaxis = list(title = ""),
+             yaxis = list(title = "Percentage"), barmode = "stack") 
     
   })
 
@@ -204,6 +206,7 @@ my_server <- function(input, output){
             name = "Recent Graduate") %>% 
       add_trace(y = ~median_grad, name = "Graduate") %>% 
       layout(title = "Median Salary Difference Between Recent Graduate and 
-             Graduate", yaxis = list(title = "Salary"), barmode = "group")
+             Graduate", xaxis = list(title = "Median Salary"),
+             yaxis = list(title = "Salary"), barmode = "group")
     })
 }
