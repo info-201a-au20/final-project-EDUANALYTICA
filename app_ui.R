@@ -21,7 +21,7 @@ intro_main_content <- mainPanel(
       with their majors"),
     
     h3("Questions answered"),
-    p("This project seeks to provide insights about the education domain. 
+    p(id = "list_name", "This project seeks to provide insights about the education domain. 
     It answers the following questions:"),
     tags$ol(
       tags$li("What are the gender disparities within majors?"),
@@ -33,13 +33,7 @@ intro_main_content <- mainPanel(
     p("Our data is obtained from the American Community Survey Public Use Microdata
     series and from the United States Census. The data contains grad students 
       (ages 25+) as well as recent grads (ages < 28) with information about basic
-      earnings and labor force information."),
-    
-    h3("Abouts us"),
-    h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
-    p("The authors are students at the University of Washington studying Informatics.
-    We are passionate about creating accessible information to help people make data
-    -driven decisions.")
+      earnings and labor force information.")
 )
 
 page_intro <- tabPanel(
@@ -148,12 +142,25 @@ page_three <- tabPanel(
 # 
 # 
 
-
+page_four_main_content <- mainPanel(
+  h3("Abouts Us"),
+  h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
+  p("The authors are students at the University of Washington studying Informatics.
+    We are passionate about creating accessible information to help people make data
+    -driven decisions.")
+)
+  
+page_four <- tabPanel(
+  id = "aboutus",
+  "About Us",
+  fluidPage(page_four_main_content)
+)
 
 my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
   page_one,
   page_two,
   page_three,
-  includeCSS("style.css")
+  page_four,
+  includeCSS("styles.css")
 )
