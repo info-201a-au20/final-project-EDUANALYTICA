@@ -125,7 +125,7 @@ page_two <- tabPanel(
 bar_sidebar_content <- sidebarPanel(
 selectInput(inputId = "x_var",
             label = "Select a major",
-            choices = major_categories$Major_category)
+            choices = major_categories$Major_category),
 
 )
 
@@ -139,9 +139,22 @@ bar_main_content <- mainPanel(
 
 page_three <- tabPanel(
   "Bar Chart",
-  sidebarLayout(bar_sidebar_content, bar_main_content)
+  sidebarLayout(bar_sidebar_content, 
+                bar_main_content)
 )
+
+page_four <- tabPanel(
   
+  "Our Findings",
+  h1("Our Findings"),
+  h3("What are the gender disparities within majors?"),
+  p(),
+  plotlyOutput("gender_disparities"), 
+  h3("How much does a recent graduate earn as comapared to a graduate student?"),
+  p(),
+  h3("What is the unemployment rate within different majors?"),
+  p()
+)
 # 
 # conc_sidebar_content
 # conc_main_content
@@ -154,6 +167,6 @@ my_ui <- navbarPage("FINAL PROJECT",
   page_intro,
   page_one,
   page_two,
-  page_three
-
+  page_three,
+  page_four
 )

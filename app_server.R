@@ -144,4 +144,25 @@ my_server <- function(input, output){
              xaxis = list(title = "Major Categories"),
              yaxis = list(title = "Median Salaries in dollar"))
   })
+  
+  # conclusion gender disparities
+  output$gender_disparities <- renderPlotly({
+    
+    gender_df <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE) %>% 
+      mutate(percent_diff = abs((1 - ShareWomen) - ShareWomen)) %>% 
+      top_n(5, percent_diff)
+    major <- gender_df %>% 
+      pull(Major)
+    num_men <- gender_df %>% 
+      pull(Men)
+    num_women <- gender_df %>% 
+      pull(Women)
+    df <- data.frame(major, num_men, num_women)
+    
+    plot_ly(df, y = ~major, x = ~num_men, type = "bar", 
+           name = "Men", orientation = "h") %>% 
+      add_trace(x = ~num_women, name = "Women") %>% 
+      layout(yaxis = list(title = "Number of People"), barmode = "group") 
+    
+  })
 }
