@@ -155,7 +155,7 @@ my_server <- function(input, output){
       pull(ShareWomen)
     df_gender <- data.frame(major, percent_men, percent_women)
     
-    plot_ly(df, x = ~major, y = ~percent_men, type = "bar", 
+    plot_ly(df_gender, x = ~major, y = ~percent_men, type = "bar", 
            name = "Men") %>% 
       add_trace(y = ~percent_women, name = "Women") %>% 
       layout(title = "Top Five Majors of Gender Disparities",
@@ -200,7 +200,7 @@ my_server <- function(input, output){
       pull(medianGrad)
     df_salary <- data.frame(major_salary, median_recent, median_grad)
     
-    plot_ly(df, x = ~major_salary, y = ~median_recent, type = "bar", 
+    plot_ly(df_salary, x = ~major_salary, y = ~median_recent, type = "bar", 
             name = "Recent Graduate") %>% 
       add_trace(y = ~median_grad, name = "Graduate") %>% 
       layout(title = "Median Salary Difference Between Recent Graduate and 
