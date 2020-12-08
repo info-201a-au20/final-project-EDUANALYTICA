@@ -9,6 +9,7 @@ intro_main_content <- mainPanel(
   
     h1("An Investment in Knowledge Pays The Best Interest"),
     
+    img(src='gradcaps.png'),
    
     h3("Background Information"),
     p(" People contemplate getting a college degree and they wonder if it is 
