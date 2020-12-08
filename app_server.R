@@ -164,7 +164,7 @@ my_server <- function(input, output){
   })
 
   output$employment_rate <- renderPlotly({
-    scatter_plot_data <- all_ages %>%
+    scatter_plot_data <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE) %>%
       group_by(Major_category) %>%
       summarize(
         employed = sum(Employed, na.rm = TRUE) / 1000,
@@ -189,7 +189,6 @@ my_server <- function(input, output){
       )
     scatter_plot
   })
-}
 
   output$salary_difference <- renderPlotly({
     
