@@ -196,7 +196,7 @@ page_five <- tabPanel(
 
 
 my_ui <- navbarPage(
-  theme = shinytheme("darkly"),
+  theme = shinytheme("yeti"),
   "FINAL PROJECT",
   page_intro,
   page_one,
