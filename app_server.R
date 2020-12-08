@@ -186,8 +186,8 @@ my_server <- function(input, output){
         subtitle = "",
         color = "Major Category",
         size = "Dot size is median salary(1=$1000)",
-        x = "Number of unemployed students (1 = 1000 students)",
-        y = "Number of employed students (1 = 1000 students)"
+        x = "Number of employed students (1 = 1000 students)",
+        y = "Number of unemployed students (1 = 1000 students)"
       )
     scatter_plot
   })
