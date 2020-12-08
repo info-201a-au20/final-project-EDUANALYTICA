@@ -147,10 +147,14 @@ page_four <- tabPanel(
   "Our Findings",
   h1("Our Findings"),
   h3("What are the gender disparities within majors?"),
-  p(),
   plotlyOutput("gender_disparities"), 
-  h3("How much does a recent graduate earn as comapared to a graduate student?"),
-  p(),
+  p("From comparing the number of women vs. men within different majors, 
+    we can observe some patterns among the gender disparities within majors.
+    One of the patterns observed is, majors under engineering have a higher
+    percentage of men compared to women. The bar chart above displays the 5 majors that have
+    the most significant difference between the amount of men and women."),
+  h3("How much does a recent undergraduate earn as comapared to a graduate student?"),
+  p("A recent undergraduate "),
   h3("What is the unemployment rate within different majors?"),
   p()
 )
