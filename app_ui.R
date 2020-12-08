@@ -167,7 +167,9 @@ page_four <- tabPanel(
     major categories and found that engineering, health, and humanities & liberal arts
     have the highest unemployment rate as well as employed rate. However,
     business runs as an outlier with the highest employment and unemployment rate, almost having
-    5000 more employed people than engineering.")
+    5000 more employed people than engineering. We also found that there's a linear 
+    pattern when comparing unemployment and employment rates for all majors. Therefore,
+    the higher the unemployment rate, the higer the employment rate.")
 )
 # 
 # conc_sidebar_content
