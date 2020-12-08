@@ -102,7 +102,7 @@ my_server <- function(input, output){
   # as.list(widget_test)
   num_men <- read.csv("data/women-stem.csv",
                       stringsAsFactors = FALSE) %>%
-    filter(Major_category == widget_test) %>%
+    filter(Major_category == as.list(widget_test)) %>%
     summarize(
       sum_men = sum(Men, na.rm = TRUE)
     ) %>%
@@ -111,7 +111,7 @@ my_server <- function(input, output){
     )
   num_women <- read.csv("data/women-stem.csv",
                         stringsAsFactors = FALSE) %>%
-    filter(Major_category == widget_test) %>%
+    filter(Major_category == as.list(widget_test)) %>%
     summarize(
       sum_women = sum(Women, na.rm = TRUE)
     ) %>%
@@ -158,7 +158,7 @@ my_server <- function(input, output){
             name = "Median Salary of Recent graduates",
             type = "scatter", mode = 'lines',
             line = list(color = 'rgb(205, 12, 24', width = 3)) %>% 
-      layout(title = "Median of Recent Graduates by Majors - Under 25-year-old",
+      layout(title = "Median of Recent Graduates by Majors - Under 28-years-old",
              xaxis = list(title = "Major Categories"),
              yaxis = list(title = "Median Salaries in dollar"))
   })
@@ -174,7 +174,7 @@ my_server <- function(input, output){
                                     type = "scatter", mode = 'lines',
                                     line = list(color = 'rgb(22, 96, 167)', 
                                                 width = 3, mode = 'lines')) %>%
-      layout(title = "Median of Graduates by Majors - Above 25-year-old",
+      layout(title = "Median of Graduates by Majors - Above 25-years-old",
              xaxis = list(title = "Major Categories"),
              yaxis = list(title = "Median Salaries in dollar"))
   })
