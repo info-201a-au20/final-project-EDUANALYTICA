@@ -2,6 +2,8 @@ library("shiny")
 library("dplyr")
 library("plotly")
 library("ggplot2")
+library("shinythemes")
+
 
 intro_main_content <- mainPanel(
   
@@ -192,7 +194,9 @@ page_five <- tabPanel(
 )
 
 
-my_ui <- navbarPage("FINAL PROJECT",
+my_ui <- navbarPage(
+  theme = shinytheme("darkly"),
+  "FINAL PROJECT",
   page_intro,
   page_one,
   page_two,
