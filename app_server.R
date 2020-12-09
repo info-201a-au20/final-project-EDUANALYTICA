@@ -59,6 +59,9 @@ my_server <- function(input, output) {
     )
   })
 
+  output$summary_barchart <- renderText({
+    "TESTING HERE - BAR CHART"
+  })
 
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
@@ -105,8 +108,9 @@ my_server <- function(input, output) {
       )
   })
 
-
-
+  output$summary_piechart <- renderText({
+    "TESTING HERE - PIE CHART"
+  })
 
   # Leon's part: line plot
   # print the slider bar for recent-grad
@@ -155,6 +159,10 @@ my_server <- function(input, output) {
       )
   })
 
+  output$summary_lineplot <- renderText({
+    "TESTING HERE - LINEPLOT"
+  })
+  
   # conclusion gender disparities
   output$gender_disparities <- renderPlotly({
     gender_df <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE) %>%
