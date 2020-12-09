@@ -1,3 +1,4 @@
+# Import Library
 library("shiny")
 library("dplyr")
 library("plotly")
@@ -5,6 +6,7 @@ library("ggplot2")
 library("shinythemes")
 library("gfonts")
 
+# Initiate Introduction Page
 intro_main_content <- mainPanel(
   h1("An Investment in Knowledge Pays The Best Interest"),
   img(src = "gradcaps.png"),
@@ -32,15 +34,21 @@ intro_main_content <- mainPanel(
     students (ages 25+) as well as recent grads (ages < 28) with information
     about basic earnings and labor force information.")
 )
+
+# Create a Tab Panel for Introduction
 page_intro <- tabPanel(
   "Introduction",
   fluidPage(
     intro_main_content
   )
 )
+
+# Wrangle Data for Pie Select Input
 women_in_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
 major <- women_in_stem %>%
   pull(Major)
+
+# Create Pie Chart Sidebar Panel
 pie_sidebar_content <- sidebarPanel(
   selectInput(
     inputId = "pie_widget_one",
@@ -48,9 +56,13 @@ pie_sidebar_content <- sidebarPanel(
     choice = major
   )
 )
+
+# Create Pie Chart Main Panel
 pie_main_content <- mainPanel(
   plotlyOutput("pieplot")
 )
+
+# Create Page One Tab Panel
 page_one <- tabPanel(
   "Pie Chart",
   tabsetPanel(
@@ -77,12 +89,14 @@ page_one <- tabPanel(
   ),
 )
 
-# Leon's part: lineplot
-# import combined dataframe from server.r
+# Import combined dataframe from server.r
 source("app_server.R")
 line_plot_data
-# store the range - recent_grad
+
+# Store the Range - recent_grad
 salary_range_recent <- range(line_plot_data$medianRecent)
+
+# Create Line Plot Sidebar Panel for Recent Grad
 line_sidebar_content <- sidebarPanel(
   h2("Select a Median Salary Range - Recent Graduated Attendees"),
   sliderInput(
@@ -92,8 +106,11 @@ line_sidebar_content <- sidebarPanel(
     value = salary_range_recent
   )
 )
-# store the range - grad_students
+
+# Store the Range - grad_students
 salary_range_grad <- range(line_plot_data$medianGrad)
+
+# Create Line Plot Sidebar Panvel for Grad
 line_sidebar_content2 <- sidebarPanel(
   h2("Select a Median Salary Range - Graduate School Attendees"),
   sliderInput(
@@ -103,6 +120,8 @@ line_sidebar_content2 <- sidebarPanel(
     value = salary_range_grad
   )
 )
+
+# Create Line Plot Main Panel
 line_main_content <- mainPanel(
   plotlyOutput(
     outputId = "lineplot_recent_widget"
@@ -113,6 +132,8 @@ line_main_content2 <- mainPanel(
     outputId = "lineplot_grad_widget"
   )
 )
+
+# Create Page Two Tab Panel
 page_two <- tabPanel(
   "Line plots",
   tabsetPanel(
@@ -145,11 +166,15 @@ page_two <- tabPanel(
     )
   ),
 )
+
+# Wrangle Data for Bar Select Input
 major_categories <-
   read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
   group_by(Major) %>%
   summarize() %>%
   pull(Major)
+
+# Create Bar Plot Sidebar Panel
 bar_sidebar_content <- sidebarPanel(
   selectInput(
     inputId = "x_var",
@@ -158,11 +183,15 @@ bar_sidebar_content <- sidebarPanel(
     selected = "Engineering"
   )
 )
+
+# Create Pie Plot Main Panel
 bar_main_content <- mainPanel(
   plotlyOutput(
     outputId = "barplot"
   )
 )
+
+# Create Page Three Tab Panel
 page_three <- tabPanel(
   "Bar Chart",
   tabsetPanel(
@@ -193,6 +222,8 @@ page_three <- tabPanel(
     )
   ),
 )
+
+# Create Page Four Tab Panel
 page_four <- tabPanel(
   "Our Findings",
   h1("Our Findings"),
@@ -234,7 +265,9 @@ page_four <- tabPanel(
     graduates while there is a huge demand for individuals
     in the engineering industry.")
 )
-page_four_main_content <- mainPanel(
+
+# Create Page Five Main Panel
+page_five_main_content <- mainPanel(
   h3("About Us"),
   h4("Authors: Nicole Fendi, Ian Wang, Brenda Obonyo, Leon Kan, Zhengrui Sun"),
   p("The authors are students at the University of Washington studying
@@ -242,12 +275,13 @@ page_four_main_content <- mainPanel(
   people make data-driven decisions.")
 )
 
+# Create Page Five Tab Panel
 page_five <- tabPanel(
   "About Us",
-  fluidPage(page_four_main_content)
+  fluidPage(page_five_main_content)
 )
 
-
+# Initiate UI
 my_ui <- navbarPage(
   theme = shinytheme("yeti"),
   "FINAL PROJECT",
