@@ -119,8 +119,7 @@ bar_sidebar_content <- sidebarPanel(
   )
 )
 bar_main_content <- mainPanel(
-  h1("Comparison of Unemployed and Employed Rates of Recent Graduates based
-     on major"),
+  h1("Employment Rate of Recent Graduates by Major"),
   plotlyOutput(
     outputId = "barplot"
   )
