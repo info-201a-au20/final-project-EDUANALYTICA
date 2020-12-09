@@ -1,6 +1,7 @@
 # Education Project Brainstorm 
 
-- [Mid-Point Delivery](https://info-201a-au20.github.io/final-project-iwangy/)
+- [Final Deliverable Shiny App](https://iwangy.shinyapps.io/EDUAnalytica/)
+- [Mid-Point Deliverable](https://info-201a-au20.github.io/final-project-iwangy/)
 
 ## Domain of Interest
 **Why are we interested in this field/domain?**
