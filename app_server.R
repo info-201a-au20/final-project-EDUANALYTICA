@@ -51,7 +51,7 @@ my_server <- function(input, output) {
     )
     barplot <- barplot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
     barplot <- barplot %>% layout(
-      xaxis = list(title = "Count"),
+      xaxis = list(title = "Percentage"),
       barmode = "group"
     )
   })
