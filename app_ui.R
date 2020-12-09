@@ -53,11 +53,17 @@ pie_main_content <- mainPanel(
 )
 page_one <- tabPanel(
   "Pie Chart",
-  sidebarLayout(
-    pie_sidebar_content,
-    pie_main_content
-  )
+  tabsetPanel(
+    type = "tabs",
+    tabPanel(
+      "Plot",
+      pie_sidebar_content,
+      pie_main_content
+    ),
+    tabPanel("Summary", verbatimTextOutput("summary_piechart"))
+  ),
 )
+
 # Leon's part: lineplot
 # import combined dataframe from server.r
 source("app_server.R")
@@ -96,14 +102,17 @@ line_main_content2 <- mainPanel(
 )
 page_two <- tabPanel(
   "Line plots",
-  sidebarLayout(
-    line_sidebar_content,
-    line_main_content
+  tabsetPanel(
+    type = "tabs",
+    tabPanel(
+      "Plot",
+      line_sidebar_content,
+      line_main_content,
+      line_sidebar_content2,
+      line_main_content2
+    ),
+    tabPanel("Summary", verbatimTextOutput("summary_lineplot"))
   ),
-  sidebarLayout(
-    line_sidebar_content2,
-    line_main_content2
-  )
 )
 major_categories <-
   read.csv("data/recent-grads.csv", stringsAsFactors = FALSE) %>%
@@ -126,10 +135,15 @@ bar_main_content <- mainPanel(
 )
 page_three <- tabPanel(
   "Bar Chart",
-  sidebarLayout(
-    bar_sidebar_content,
-    bar_main_content
-  )
+  tabsetPanel(
+    type = "tabs",
+    tabPanel(
+      "Plot",
+      bar_sidebar_content,
+      bar_main_content
+    ),
+    tabPanel("Summary", verbatimTextOutput("summary_barchart"))
+  ),
 )
 page_four <- tabPanel(
   "Our Findings",
