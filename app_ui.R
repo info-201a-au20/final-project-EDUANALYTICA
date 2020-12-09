@@ -60,7 +60,20 @@ page_one <- tabPanel(
       pie_sidebar_content,
       pie_main_content
     ),
-    tabPanel("Summary", verbatimTextOutput("summary_piechart"))
+    tabPanel("Summary", 
+             h3("We explored the following questions with the pie chart"),
+             tags$ol(id = "list",
+                     tags$li("What are the gender disparities within majors?"),
+                     tags$li("Are there any patterns or trends that can be 
+                             noticed with certain majors being more dominated 
+                             by a certain gender?")
+             ),
+             p("With the data provided to us, we split the bar graph into 2 
+             sections: men and women. The selector on the left allows the user 
+             to filter between the different majors. It is observed from the pie
+             charts that fields in engineering were more dominated by men, 
+             while fields in healthcare were more dominated by women.")
+    )
   ),
 )
 
@@ -111,7 +124,25 @@ page_two <- tabPanel(
       line_sidebar_content2,
       line_main_content2
     ),
-    tabPanel("Summary", verbatimTextOutput("summary_lineplot"))
+    tabPanel("Summary", 
+             h3("We explored the following questions with the line plots"),
+             tags$ol(id = "list",
+                     tags$li("What major categories are worth pursuing a
+                             master’s or higher degree?"),
+                     tags$li("What major categories are not worth pursuing a
+                             master’s or higher degree?")
+             ),
+             p("With the data provided to us, we created two line charts.
+               The first line chart is of different salaries of recent graduates
+               < 28, while the second line chart is of different salaries of
+               graduates 25+. The slider bar adjusts and filters the salary 
+               range of the line charts. It is observed that: Engineering majors
+               have the highest median salary for both recent graduates and 
+               attendees went to graduate schools. A degree of master or higher
+               level makes a huge improvement on the median salary in
+               Psychology & Social Work (30k - 62k), Physical Science
+               (42k - 88k), Humanities & Liberal Arts(32-67).")
+    )
   ),
 )
 major_categories <-
@@ -141,7 +172,25 @@ page_three <- tabPanel(
       bar_sidebar_content,
       bar_main_content
     ),
-    tabPanel("Summary", verbatimTextOutput("summary_barchart"))
+    tabPanel("Summary", 
+             h3("We explored the following questions with the bar chart"),
+             tags$ol(id = "list",
+                     tags$li("What are the employment and unemployment rates
+                             across different majors?"),
+                     tags$li("What is the difference between unemployment rates 
+                             across different majors?")
+             ),
+             p("With the data provided to us, we created a bar chart. The blue
+               bar represents the unemployment rate of a specific major and the
+               pink bar represents the employment rate. It is observed that most
+               majors have an unemployment rate centered around 5 percent and
+               there is no tremendous difference in the unemployment rate among
+               different majors. The majors that have the lowest unemployment
+               rate are Educational Administration and Supervision and
+               Geological and Geophysical Engineering with no unemployment and
+               the major that has the highest unemployment rate is Miscellaneous
+               Fine Art with an unemployment rate of 15 percent.")
+    )
   ),
 )
 page_four <- tabPanel(
@@ -155,7 +204,9 @@ page_four <- tabPanel(
     One of the patterns observed is, majors under engineering have a higher
     percentage of men compared to women. The bar chart above displays the 5
     majors that have the most significant difference between the amount of men
-    and women."),
+    and women. The greater implication of this finding is that women are not
+    equally represented in fields such as engineering, while similarly,
+    men are not equally represented in fields such as health."),
   h3("How much does a recent undergraduate earn as comapared to a graduate
      student?"),
   plotlyOutput("salary_difference"),
@@ -164,7 +215,10 @@ page_four <- tabPanel(
     earned graduate degrees make significantly more in all major categories.
     For example, in the chart above, an engineering recent undergraduate earns
     around $57k/per year while an engineering major with a graduate degree can
-    earn up to $94k/per year."),
+    earn up to $94k/per year. The greater implication of this finding is that
+    graduate school can be an excellent way to boost your earnings;
+    however, it notes the issue of affordable and attainable education for all
+    who pursue it."),
   h3("What is the unemployment rate within different majors?"),
   plotlyOutput("employment_rate"),
   br(),
@@ -175,7 +229,10 @@ page_four <- tabPanel(
     unemployment rate, almost having 5000 more employed people than
     engineering. We also found that there's a linear pattern when comparing
     unemployment and employment rates for all majors. Therefore, the higher
-    the unemployment rate, the higher the employment rate.")
+    the unemployment rate, the higher the employment rate. The greater
+    implication of this finding is that there is an abundance of business
+    graduates while there is a huge demand for individuals
+    in the engineering industry.")
 )
 page_four_main_content <- mainPanel(
   h3("About Us"),
@@ -186,7 +243,6 @@ page_four_main_content <- mainPanel(
 )
 
 page_five <- tabPanel(
-  # id = "aboutus",
   "About Us",
   fluidPage(page_four_main_content)
 )

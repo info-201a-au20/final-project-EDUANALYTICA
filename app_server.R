@@ -59,10 +59,6 @@ my_server <- function(input, output) {
     )
   })
 
-  output$summary_barchart <- renderText({
-    "TESTING HERE - BAR CHART"
-  })
-
   # WOMEN vs MEN pie chart - JERRY'S SECTION
   output$pieplot <- renderPlotly({
     num_men <- read.csv("data/women-stem.csv",
@@ -106,10 +102,6 @@ my_server <- function(input, output) {
           input$pie_widget_one
         )
       )
-  })
-
-  output$summary_piechart <- renderText({
-    "TESTING HERE - PIE CHART"
   })
 
   # Leon's part: line plot
@@ -157,10 +149,6 @@ my_server <- function(input, output) {
         xaxis = list(title = "Major Categories"),
         yaxis = list(title = "Median Salaries in dollar")
       )
-  })
-
-  output$summary_lineplot <- renderText({
-    "TESTING HERE - LINEPLOT"
   })
   
   # conclusion gender disparities
