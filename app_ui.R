@@ -284,7 +284,7 @@ page_five <- tabPanel(
 # Initiate UI
 my_ui <- navbarPage(
   theme = shinytheme("yeti"),
-  "FINAL PROJECT",
+  "EDU ANALYTICA",
   page_intro,
   page_one,
   page_two,
