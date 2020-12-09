@@ -1,9 +1,9 @@
-# import library
+# Import Library
 library(shiny)
 
-# load server and UI
+# lLod Server and UI
 source("app_server.R")
 source("app_ui.R")
 
-# build a Shiny app
+# Build a Shiny Application
 shinyApp(ui = my_ui, server = my_server)
