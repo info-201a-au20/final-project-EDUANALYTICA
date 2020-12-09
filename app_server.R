@@ -53,6 +53,7 @@ my_server <- function(input, output) {
     barplot <- barplot %>% add_trace(x = ~total_unemployed, name = "Unemployed",
                                      marker = list(color = c("#6886c5")))
     barplot <- barplot %>% layout(
+      title = "Employment Rate of Recent Graduates by Major",
       xaxis = list(title = "Percentage"),
       barmode = "group"
     )

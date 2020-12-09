@@ -128,7 +128,6 @@ bar_sidebar_content <- sidebarPanel(
   )
 )
 bar_main_content <- mainPanel(
-  h1("Employment Rate of Recent Graduates by Major"),
   plotlyOutput(
     outputId = "barplot"
   )
@@ -150,6 +149,7 @@ page_four <- tabPanel(
   h1("Our Findings"),
   h3("What are the gender disparities within majors?"),
   plotlyOutput("gender_disparities"),
+  br(),
   p("From comparing the number of women vs. men within different majors,
     we can observe some patterns among the gender disparities within majors.
     One of the patterns observed is, majors under engineering have a higher
@@ -167,6 +167,7 @@ page_four <- tabPanel(
     earn up to $94k/per year."),
   h3("What is the unemployment rate within different majors?"),
   plotlyOutput("employment_rate"),
+  br(),
   p("We compared the number of unemployment and employed rates of different
     major categories and found that engineering, health, and humanities &
     liberal arts have the highest unemployment rate as well as employed rate.
