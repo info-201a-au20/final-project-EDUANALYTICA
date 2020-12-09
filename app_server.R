@@ -47,9 +47,11 @@ my_server <- function(input, output) {
       x = ~total_employed,
       y = input$x_var,
       type = "bar",
-      orientation = "h"
+      orientation = "h",
+      marker=list(color = c("#d35d6e"))
     )
-    barplot <- barplot %>% add_trace(x = ~total_unemployed, name = "Unemployed")
+    barplot <- barplot %>% add_trace(x = ~total_unemployed, name = "Unemployed",
+                                     marker = list(color = c("#6886c5")))
     barplot <- barplot %>% layout(
       xaxis = list(title = "Percentage"),
       barmode = "group"
@@ -77,7 +79,7 @@ my_server <- function(input, output) {
 
     gender <- c("Men", "Women")
     
-    gender_color <- c("Men" = "#00A676", "Women" = "#363636")
+    gender_color <- c("Men" = "#d35d6e", "Women" = "#6886c5")
 
     num <- c(num_men, num_women)
 
@@ -170,9 +172,11 @@ my_server <- function(input, output) {
 
     plot_ly(df_gender,
       x = ~major, y = ~percent_men, type = "bar",
-      name = "Men"
+      name = "Men",
+      marker=list(color = c("#d35d6e"))
     ) %>%
-      add_trace(y = ~percent_women, name = "Women") %>%
+      add_trace(y = ~percent_women, name = "Women",  
+                marker = list(color = c("#6886c5"))) %>%
       layout(
         title = "Top Five Majors of Gender Disparities",
         xaxis = list(title = ""),
@@ -220,9 +224,12 @@ my_server <- function(input, output) {
 
     plot_ly(df_salary,
       x = ~major_salary, y = ~median_recent, type = "bar",
-      name = "Recent Graduate"
+      name = "Recent Graduate",
+      marker=list(color = c("#d35d6e"))
+  
     ) %>%
-      add_trace(y = ~median_grad, name = "Graduate") %>%
+      add_trace(y = ~median_grad, name = "Graduate",  marker = 
+                  list(color = c("#6886c5"))) %>%
       layout(
         title = "Median Salary Difference Between Recent Graduate and
              Graduate", xaxis = list(title = "Median Salary"),

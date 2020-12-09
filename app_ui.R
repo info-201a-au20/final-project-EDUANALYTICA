@@ -17,7 +17,7 @@ intro_main_content <- mainPanel(
     getting a graduate degree in their field is a good investment.
     Students are also curious to know about the probability of not getting a
     job once they graduate from school with their majors."),
-  h3("Questions answered"),
+  h3("Questions Answered"),
   p(id = "list_name", "This project seeks to provide insights about the
     education domain. It answers the following questions:"),
   tags$ol(id = "list",
