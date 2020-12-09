@@ -76,6 +76,8 @@ my_server <- function(input, output) {
       )
 
     gender <- c("Men", "Women")
+    
+    gender_color <- c("Men" = "#00A676", "Women" = "#363636")
 
     num <- c(num_men, num_women)
 
@@ -86,7 +88,7 @@ my_server <- function(input, output) {
       textinfo = "label+percent",
       insidetextfont = list(color = "#FFFFFF"), hoverinfo = "text",
       text = ~ paste0(gender, ": ", num),
-      marker = list(colors = colors, line = list(
+      marker = list(colors = gender_color, line = list(
         color = "#FFFFFF",
         width = 1
       )),

@@ -3,7 +3,7 @@ library("dplyr")
 library("plotly")
 library("ggplot2")
 library("shinythemes")
-
+library("gfonts")
 
 intro_main_content <- mainPanel(
   h1("An Investment in Knowledge Pays The Best Interest"),
@@ -16,7 +16,7 @@ intro_main_content <- mainPanel(
     People who already have their undergraduate degrees are curious to know if
     getting a graduate degree in their field is a good investment.
     Students are also curious to know about the probability of not getting a
-    job once they graduate from school with their majors"),
+    job once they graduate from school with their majors."),
   h3("Questions answered"),
   p(id = "list_name", "This project seeks to provide insights about the
     education domain. It answers the following questions:"),

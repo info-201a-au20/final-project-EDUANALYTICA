@@ -4,7 +4,9 @@
 }
 
 #list {
-  font-family: lato;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lato/v17/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
 }
 
 h1 {
@@ -18,8 +20,12 @@ h3 {
 
 h4{
   color: orange;
+  font-weight: bold;
 }
 
 p {
-  font-family: lato;
+  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato'; */
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lato/v17/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
 }
